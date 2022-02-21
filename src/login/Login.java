@@ -4,8 +4,9 @@
  */
 package login;
 
-import data.DataManager;
+import controller.Controller;
 import java.awt.Frame;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.QuanTri;
@@ -20,11 +21,19 @@ import viewsv.SinhVienMain;
  */
 public class Login extends javax.swing.JFrame {
 
+    public ArrayList<TaiKhoan> dsTaiKhoan = new ArrayList<>();
+    public ArrayList<SinhVien> dsSV = new ArrayList<>();
+    public ArrayList<QuanTri> dsQT = new ArrayList<>();
+    private Controller con;
+
     /**
      * Creates new form Login
      */
     public Login() {
-        new DataManager();
+        con = new Controller();
+        dsTaiKhoan = con.docFile("src/data/taikhoan.txt");
+        dsSV = con.docFile("src/data/sinhvien.txt");
+        dsQT = con.docFile("src/data/quantri.txt");
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -144,14 +153,14 @@ public class Login extends javax.swing.JFrame {
                 String user = txtTaiKhoan.getText();
                 String pass = txtMatKhau.getText();
                 TaiKhoan temp = new TaiKhoan(user, pass);
-                int index = DataManager.dsTaiKhoan.indexOf(temp);
+                int index = dsTaiKhoan.indexOf(temp);
                 if (index < 0) {
                     JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
                 } else {
-                    temp = DataManager.dsTaiKhoan.get(index);
+                    temp = dsTaiKhoan.get(index);
                     if (temp.getQuyen().equals("QT")) {
-                        JOptionPane.showMessageDialog(this, "Bạn vừa đăng nhập với vai trò quản trị viên!");
-                        QuanTri qt = DataManager.dsQT
+                        JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò quản trị viên!");
+                        QuanTri qt = dsQT
                                 .stream()
                                 .filter(s -> s.getMaQuanTri().equals(user))
                                 .findFirst()
@@ -159,8 +168,8 @@ public class Login extends javax.swing.JFrame {
                         QuanTriView svMain = new QuanTriView(qt);
                         svMain.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(this, "Bạn vừa đăng nhập với vai trò sinh viên!");
-                        SinhVien sv = DataManager.dsSV
+                        JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò sinh viên!");
+                        SinhVien sv = dsSV
                                 .stream()
                                 .filter(s -> s.getMaSinhVien().equals(user))
                                 .findFirst()
