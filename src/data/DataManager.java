@@ -6,6 +6,7 @@ package data;
 
 import controller.Controller;
 import java.util.ArrayList;
+import model.QuanTri;
 import model.SinhVien;
 import model.TaiKhoan;
 
@@ -16,11 +17,13 @@ import model.TaiKhoan;
 public class DataManager {
     public static ArrayList<TaiKhoan> dsTaiKhoan;
     public static ArrayList<SinhVien> dsSV;
+    public static ArrayList<QuanTri> dsQT;
     
     private Controller controller = new Controller();
     
     public DataManager() {
         dsTaiKhoan = controller.docFile("src/data/taikhoan.txt");
         dsSV = controller.docFile("src/data/sinhvien.txt");
+        dsQT = controller.docFile("src/data/quantri.txt");
     }
 }

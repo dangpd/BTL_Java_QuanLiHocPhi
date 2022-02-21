@@ -4,17 +4,32 @@
  */
 package viewqt;
 
+import model.QuanTri;
+
 /**
  *
  * @author DucDang
  */
 public class QuanTriView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form QuanTriView
-     */
-    public QuanTriView() {
+    private QuanTri quanTri;
+
+    public QuanTri getQuanTri() {
+        return quanTri;
+    }
+
+    public void setQuanTri(QuanTri quanTri) {
+        this.quanTri = quanTri;
+    }
+
+    public QuanTriView(QuanTri qt) {
+        this.quanTri = qt;
         initComponents();
+        System.out.println(quanTri.toString());
+        lblMaQuanTri.setText(qt.getMaQuanTri());
+        lblTenQuanTri.setText(qt.getTenQuanTri());
+        lblChucVu.setText(qt.getChucVu());
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -29,9 +44,6 @@ public class QuanTriView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jblmaQuanTri = new javax.swing.JLabel();
-        jblchucVu = new javax.swing.JLabel();
-        jbltenChucVu = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnThuHocPhi = new javax.swing.JButton();
         btnThuHoHocPhi = new javax.swing.JButton();
@@ -39,6 +51,9 @@ public class QuanTriView extends javax.swing.JFrame {
         btnThuBoSung = new javax.swing.JButton();
         btnThuKhaoThi = new javax.swing.JButton();
         btnThuTheoDangKi = new javax.swing.JButton();
+        lblMaQuanTri = new javax.swing.JLabel();
+        lblTenQuanTri = new javax.swing.JLabel();
+        lblChucVu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,23 +101,21 @@ public class QuanTriView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(jblmaQuanTri, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblMaQuanTri, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbltenChucVu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(39, 39, 39)
+                                .addComponent(lblTenQuanTri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(31, 31, 31)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jblchucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnThuKhaoThi, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnThuTheoDangKi, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(52, 52, 52))))
+                                    .addComponent(btnThuTheoDangKi, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblChucVu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(52, 52, 52))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -123,12 +136,12 @@ public class QuanTriView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addComponent(jblmaQuanTri)
-                    .addComponent(jblchucVu))
+                    .addComponent(lblMaQuanTri)
+                    .addComponent(lblChucVu))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jbltenChucVu))
+                    .addComponent(lblTenQuanTri))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
@@ -185,7 +198,6 @@ public class QuanTriView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new QuanTriView().setVisible(true);
             }
         });
     }
@@ -201,8 +213,8 @@ public class QuanTriView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jblchucVu;
-    private javax.swing.JLabel jblmaQuanTri;
-    private javax.swing.JLabel jbltenChucVu;
+    private javax.swing.JLabel lblChucVu;
+    private javax.swing.JLabel lblMaQuanTri;
+    private javax.swing.JLabel lblTenQuanTri;
     // End of variables declaration//GEN-END:variables
 }

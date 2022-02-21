@@ -8,8 +8,10 @@ import data.DataManager;
 import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import model.QuanTri;
 import model.SinhVien;
 import model.TaiKhoan;
+import viewqt.QuanTriView;
 import viewsv.SinhVienMain;
 
 /**
@@ -149,6 +151,13 @@ public class Login extends javax.swing.JFrame {
                     temp = DataManager.dsTaiKhoan.get(index);
                     if (temp.getQuyen().equals("QT")) {
                         JOptionPane.showMessageDialog(this, "Bạn vừa đăng nhập với vai trò quản trị viên!");
+                        QuanTri qt = DataManager.dsQT
+                                .stream()
+                                .filter(s -> s.getMaQuanTri().equals(user))
+                                .findFirst()
+                                .get();
+                        QuanTriView svMain = new QuanTriView(qt);
+                        svMain.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(this, "Bạn vừa đăng nhập với vai trò sinh viên!");
                         SinhVien sv = DataManager.dsSV

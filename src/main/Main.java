@@ -9,12 +9,15 @@ import model.Khoa;
 import model.Lop;
 import model.SinhVien;
 import controller.Controller;
+import model.CongNo;
 import model.HocPhan;
 import model.LichSuGD;
 import model.LopHocPhan;
 import model.QuanTri;
 import model.TaiKhoan;
 import model.TaiKhoanTien;
+import model.Thu;
+import model.ThuTheoDangKy;
 
 
 /**
@@ -123,8 +126,36 @@ public class Main {
         taiKhoans.add(tk10);
         con.ghiFile(taiKhoans, "src/data/taikhoan.txt");
         
-        ArrayList<LichSuGD> lichSuGiaoDichs = new ArrayList<LichSuGD>();
-        con.ghiFile(lichSuGiaoDichs, "src/data/lichsugiaodich.txt");
+        //Thu theo đăn ký
+        ArrayList<Thu> thuTheoDangKy = new ArrayList<>();
+        Thu thuTheoDangKy1 = new ThuTheoDangKy(1, lopHocPhan1);
+        Thu thuTheoDangKy2 = new ThuTheoDangKy(2, lopHocPhan2);
+        Thu thuTheoDangKy3 = new ThuTheoDangKy(3, lopHocPhan3);
+        Thu thuTheoDangKy4 = new ThuTheoDangKy(4, lopHocPhan4);
+        thuTheoDangKy.add(thuTheoDangKy1);
+        thuTheoDangKy.add(thuTheoDangKy2);
+        thuTheoDangKy.add(thuTheoDangKy3);
+        thuTheoDangKy.add(thuTheoDangKy4);
+        con.ghiFile(thuTheoDangKy, "src/TextJava/thutheodangky.txt");
+
+        //Công nợ
+        ArrayList<CongNo> congNos = new ArrayList<>();
+        CongNo congNo1 = new CongNo(sinhVien1, thuTheoDangKy1, false);
+        CongNo congNo2 = new CongNo(sinhVien2, thuTheoDangKy2, false);
+        CongNo congNo3 = new CongNo(sinhVien1, thuTheoDangKy3, false);
+        CongNo congNo4 = new CongNo(sinhVien3, thuTheoDangKy4, false);
+        congNos.add(congNo1);
+        congNos.add(congNo2);
+        congNos.add(congNo3);
+        congNos.add(congNo4);
+        System.out.println(congNos.get(1).getSinhVien().getHoTen());
+        con.ghiFile(congNos, "src/TextJava/congno.txt");
+
+        ArrayList<ThuTheoDangKy> tks = con.docFile("src/TextJava/thutheodangky.txt");
+        for (int i = 0; i < tks.size(); i++) {
+            ThuTheoDangKy get = tks.get(i);
+            System.out.println(get.getMaKhoanThu());
+        }
 
     }
 }
