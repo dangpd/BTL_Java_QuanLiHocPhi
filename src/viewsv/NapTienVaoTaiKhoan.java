@@ -4,10 +4,6 @@
  */
 package viewsv;
 
-/**
- *
- * @author Chien
- */
 public class NapTienVaoTaiKhoan extends java.awt.Dialog {
     
 

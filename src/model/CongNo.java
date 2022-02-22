@@ -7,10 +7,7 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author Chien
- */
+
 public class CongNo implements Serializable {
 
     private SinhVien sinhVien;

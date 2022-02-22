@@ -4,10 +4,6 @@
  */
 package viewsv;
 
-/**
- *
- * @author Chien
- */
 public class LichSuGiaoDich extends java.awt.Dialog {
 
     /**

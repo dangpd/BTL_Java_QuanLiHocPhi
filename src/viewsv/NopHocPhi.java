@@ -11,33 +11,18 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.CongNo;
-import model.HocPhan;
-import model.LopHocPhan;
 import model.SinhVien;
 import model.TableModel;
-import model.ThuTheoDangKy;
 
-/**
- *
- * @author Chien
- */
 public class NopHocPhi extends java.awt.Dialog {
 
     private SinhVienMain sinhVienMain;
     private SinhVien sinhVien;
-//    private TableModel<DangKiThanhCong> dangKiThanhCongsModel;
-//    private ArrayList<DangKiThanhCong> dangKiThanhCongs = new ArrayList<>();
     private TableModel<CongNo> congNoThuModel;
     private ArrayList<CongNo> congNos = new ArrayList<>();
     private Controller con;
     private String maKhoanThu;
-//    private String tenMonNop;
-//    private int tinChi;
-//    private double gia;
 
-    /**
-     * Creates new form NopHocPhi
-     */
     public NopHocPhi(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
         super(parent, modal);
         this.sinhVienMain = (SinhVienMain) parent;
@@ -45,8 +30,11 @@ public class NopHocPhi extends java.awt.Dialog {
         this.con = new Controller();
         this.congNos = con.docFile("src/TextJava/congno.txt");
         initComponents();
-        System.out.println(sinhVien.toString());
-        lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
+        loadTable();
+        this.setLocationRelativeTo(null);
+    }
+
+    public void loadTable() {
         String[] tenCot = {"Mã khoản thu", "Tên khoản thu", "Giá"};
         List<CongNo> temp = congNos.stream().filter(cn -> cn.isKiemTraThu() == false).toList();
         ArrayList<CongNo> congNoChuaThanhToan = new ArrayList<>();
@@ -66,8 +54,8 @@ public class NopHocPhi extends java.awt.Dialog {
                 }
             }
         };
+        lblSoDuTK.setText(String.format("%.2f", sinhVien.getSoTienTK()));
         tableCongNoThu.setModel(this.congNoThuModel);
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -136,6 +124,11 @@ public class NopHocPhi extends java.awt.Dialog {
 
         btnNopTatCa1.setBackground(new java.awt.Color(255, 255, 255));
         btnNopTatCa1.setText("Nộp tất cả");
+        btnNopTatCa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNopTatCa1ActionPerformed(evt);
+            }
+        });
         add(btnNopTatCa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 130, -1));
 
         pack();
@@ -161,10 +154,11 @@ public class NopHocPhi extends java.awt.Dialog {
                 if (gia > tien) {
                     JOptionPane.showMessageDialog(this, "Só tiền trong tài khoản không đủ, vui lòng nạp thêm tièn");
                 } else {
-                    tien -= gia;
+                    sinhVien.setSoTienTK(tien - gia);
                     System.out.println(sinhVien.toString());
                     lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
-
+                    congNos.get(tableCongNoThu.convertRowIndexToModel(tableCongNoThu.getSelectedRow())).setKiemTraThu(true);
+                    loadTable();
                     JOptionPane.showMessageDialog(this, "Thanh toán thành công");
                 }
             }
@@ -184,24 +178,50 @@ public class NopHocPhi extends java.awt.Dialog {
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnNopTatCa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNopTatCa1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            double tong = 0;
+            for (int i = 0; i < tableCongNoThu.getRowCount(); i++) {
+                tong += (double) tableCongNoThu.getValueAt(i, 2);
+            }
+            double tien = sinhVien.getSoTienTK();
+            if (tong > tien) {
+                JOptionPane.showMessageDialog(this, "Só tiền trong tài khoản không đủ, vui lòng nạp thêm tièn");
+            } else {
+                for (int i = 0; i < tableCongNoThu.getRowCount(); i++) {
+                    congNos.get(tableCongNoThu.convertRowIndexToModel(i)).setKiemTraThu(true);
+                }
+                sinhVien.setSoTienTK(tien - tong);
+                lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
+                loadTable();
+                JOptionPane.showMessageDialog(this, "Thanh toán thành công");
+            }
+        } catch (Exception e) {
+            Frame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnNopTatCa1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                NopHocPhi dialog = new NopHocPhi(new java.awt.Frame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
+    //    public static void main(String args[]) {
+    //        java.awt.EventQueue.invokeLater(new Runnable() {
+    //            public void run() {
+    //                NopHocPhi dialog = new NopHocPhi(new java.awt.Frame(), true);
+    //                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+    //                    public void windowClosing(java.awt.event.WindowEvent e) {
+    //                        System.exit(0);
+    //                    }
+    //                });
+    //                dialog.setVisible(true);
+    //            }
+    //        });
+    //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNop;

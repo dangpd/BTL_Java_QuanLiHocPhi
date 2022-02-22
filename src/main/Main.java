@@ -72,7 +72,7 @@ public class Main {
 
         //SinhVien
         ArrayList<SinhVien> sinhViens = new ArrayList<SinhVien>();
-        SinhVien sinhVien1 = new SinhVien("001", "Bang", lop1, 1000000, "ThaiBinh", tktien1);
+        SinhVien sinhVien1 = new SinhVien("001", "Bang", lop1, 10000000, "ThaiBinh", tktien1);
         SinhVien sinhVien2 = new SinhVien("002", "Chien", lop1, 1000000, "ThaiBinh", tktien2);
         SinhVien sinhVien3 = new SinhVien("003", "Dang", lop1, 1000000, "ThaiBinh", tktien3);
         SinhVien sinhVien4 = new SinhVien("004", "Dai", lop2, 1000000, "ThaiBinh", tktien4);
