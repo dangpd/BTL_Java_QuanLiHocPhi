@@ -22,7 +22,7 @@ import model.ThuTheoDangKy;
  * @author Chien
  */
 public class RutHocPhan extends java.awt.Dialog {
-    
+
     private SinhVienMain sinhVienMain;
     private SinhVien sinhVien;
     private TableModel<HocPhan> tableModelRutHocPhan;
@@ -38,7 +38,6 @@ public class RutHocPhan extends java.awt.Dialog {
     /**
      * Creates new form RutHocPhan
      */
-    
     public RutHocPhan(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
         super(parent, modal);
         this.sinhVien = sinhVien;
@@ -59,6 +58,12 @@ public class RutHocPhan extends java.awt.Dialog {
 
         initComponents();
 
+        loadDataTable();
+        this.setLocationRelativeTo(null);
+        sinhVienMain = (SinhVienMain) parent;
+    }
+    
+    public void loadDataTable(){
         String[] tenCot = {"Mã học phần", "Tên học phần", "Tín chỉ", "Giá"};
         this.tableModelRutHocPhan = new TableModel<HocPhan>(dsHocPhanDaDangKy, tenCot) {
             @Override
@@ -79,8 +84,6 @@ public class RutHocPhan extends java.awt.Dialog {
 
         };
         tableRutHocPhan.setModel(tableModelRutHocPhan);
-        this.setLocationRelativeTo(null);
-        sinhVienMain = (SinhVienMain) parent;
     }
 
     /**
@@ -160,10 +163,16 @@ public class RutHocPhan extends java.awt.Dialog {
             if (output == JOptionPane.YES_OPTION) {
                 dsLopHocPhan.remove(dsLopHocPhan.indexOf(lhp));
                 Thu thu = new ThuTheoDangKy();
-                thu = dsThuTheoDangKy.get(dsThuTheoDangKy.indexOf(lhp));
+                thu = dsThuTheoDangKy.get(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp)));
                 dsCongNo.remove(dsCongNo.indexOf(new CongNo(sinhVien, thu, false)));
-                dsThuTheoDangKy.remove(dsThuTheoDangKy.indexOf(lhp));
-                
+                dsThuTheoDangKy.remove(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp)));
+                dsHocPhanDaDangKy.remove(dsHocPhanDaDangKy.indexOf(hp));
+                con.ghiFile(dsLopHocPhan, "src/TextJava/lophocphan.txt");
+                con.ghiFile(dsThuTheoDangKy, "src/TextJava/thutheodangky.txt");
+                con.ghiFile(dsCongNo, "src/TextJava/congno.txt");
+                sinhVienMain.loadData();
+                loadDataTable();
+                throw new Exception("Thành công");
             }
 //            else if (output == JOptionPane.NO_OPTION) {
 //                statusLabel.setText("No selected.");
@@ -203,7 +212,6 @@ public class RutHocPhan extends java.awt.Dialog {
 //            }
 //        });
 //    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRutPhan;
