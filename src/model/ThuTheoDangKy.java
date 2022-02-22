@@ -16,7 +16,7 @@ public class ThuTheoDangKy extends Thu implements Serializable {
      * @param lopHocPhan
      */
     public ThuTheoDangKy(int soDanhMaTuDong, LopHocPhan lopHocPhan) {
-        super(String.valueOf(soDanhMaTuDong), "Thu theo đănng kí : " + lopHocPhan.getHocPhan().getTenHocPhan(), lopHocPhan.getHocPhan().getGia());
+        super("TTDK "+ String.valueOf(soDanhMaTuDong), "Thu theo đăng kí : " + lopHocPhan.getHocPhan().getTenHocPhan(), lopHocPhan.getHocPhan().getGia());
         this.lopHocPhan = lopHocPhan;
         this.soDanhMaTuDong = soDanhMaTuDong;
 
