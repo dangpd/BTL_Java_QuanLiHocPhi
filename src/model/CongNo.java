@@ -11,7 +11,8 @@ import java.util.Objects;
  *
  * @author Chien
  */
-public class CongNo implements Serializable{
+public class CongNo implements Serializable {
+
     private SinhVien sinhVien;
     private Thu khoanThu;
     private boolean kiemTraThu;
@@ -75,5 +76,4 @@ public class CongNo implements Serializable{
         return Objects.equals(this.khoanThu, other.khoanThu);
     }
 
-      
 }

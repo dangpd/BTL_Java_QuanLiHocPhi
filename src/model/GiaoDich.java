@@ -4,86 +4,92 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class GiaoDich implements Serializable {
-	private SinhVien sinhVien;
-	private Thu thuTien;
-	private TaiKhoanTien napTien;
-	private Date ngayNop;
-	private float soTien;
 
-	public GiaoDich(SinhVien sinhVien, Thu thuTien, TaiKhoanTien napTien, Date ngayNop, float soTien) {
-		this.sinhVien = sinhVien;
-		this.thuTien = thuTien;
-		this.napTien = napTien;
-		this.ngayNop = ngayNop;
-		this.soTien = soTien;
-	}
+    private SinhVien sinhVien;
+    private Thu thuTien;
+    private TaiKhoanTien napTien;
+    private Date ngayNop;
+    private float soTien;
 
-	public GiaoDich() {
-	}
+    public GiaoDich(SinhVien sinhVien, Thu thuTien, TaiKhoanTien napTien, Date ngayNop, float soTien) {
+        this.sinhVien = sinhVien;
+        this.thuTien = thuTien;
+        this.napTien = napTien;
+        this.ngayNop = ngayNop;
+        this.soTien = soTien;
+    }
 
-	public SinhVien getSinhVien() {
-		return sinhVien;
-	}
+    public GiaoDich() {
+    }
 
-	public void setSinhVien(SinhVien sinhVien) {
-		this.sinhVien = sinhVien;
-	}
+    public SinhVien getSinhVien() {
+        return sinhVien;
+    }
 
-	public Thu getThuTien() {
-		return thuTien;
-	}
+    public void setSinhVien(SinhVien sinhVien) {
+        this.sinhVien = sinhVien;
+    }
 
-	public void setThuTien(Thu thuTien) {
-		this.thuTien = thuTien;
-	}
+    public Thu getThuTien() {
+        return thuTien;
+    }
 
-	public TaiKhoanTien getNapTien() {
-		return napTien;
-	}
+    public void setThuTien(Thu thuTien) {
+        this.thuTien = thuTien;
+    }
 
-	public void setNapTien(TaiKhoanTien napTien) {
-		this.napTien = napTien;
-	}
+    public TaiKhoanTien getNapTien() {
+        return napTien;
+    }
 
-	public Date getNgayNop() {
-		return ngayNop;
-	}
+    public void setNapTien(TaiKhoanTien napTien) {
+        this.napTien = napTien;
+    }
 
-	public void setNgayNop(Date ngayNop) {
-		this.ngayNop = ngayNop;
-	}
+    public Date getNgayNop() {
+        return ngayNop;
+    }
 
-	public float getSoTien() {
-		return soTien;
-	}
+    public void setNgayNop(Date ngayNop) {
+        this.ngayNop = ngayNop;
+    }
 
-	public void setSoTien(float soTien) {
-		this.soTien = soTien;
-	}
+    public float getSoTien() {
+        return soTien;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((sinhVien == null) ? 0 : sinhVien.hashCode());
-		return result;
-	}
+    public void setSoTien(float soTien) {
+        this.soTien = soTien;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		GiaoDich other = (GiaoDich) obj;
-		if (sinhVien == null) {
-			if (other.sinhVien != null)
-				return false;
-		} else if (!sinhVien.equals(other.sinhVien))
-			return false;
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((sinhVien == null) ? 0 : sinhVien.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        GiaoDich other = (GiaoDich) obj;
+        if (sinhVien == null) {
+            if (other.sinhVien != null) {
+                return false;
+            }
+        } else if (!sinhVien.equals(other.sinhVien)) {
+            return false;
+        }
+        return true;
+    }
 
 }

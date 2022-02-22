@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
 
 public class Controller {
@@ -19,6 +20,7 @@ public class Controller {
             oos.writeObject(list);
             oos.close();
             fos.close();
+            System.out.println("ghi file thanh cong "+ fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,6 +29,7 @@ public class Controller {
     public <T> ArrayList<T> docFile(String fileName) {
         ArrayList<T> list = new ArrayList<>();
         File file = new File(fileName);
+
         try {
             file.createNewFile();
             FileInputStream fos = new FileInputStream(file);

@@ -11,15 +11,18 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Chien
  */
-public class TableDangKyMonHoc<T> extends AbstractTableModel{
+public class TableModel<T> extends AbstractTableModel {
+
     private ArrayList<T> data;
     private String[] tenCot;
-    
-    
+
+    public TableModel(ArrayList<T> data, String[] tenCot) {
+        this.data = data;
+        this.tenCot = tenCot;
+    }
 
     @Override
     public int getRowCount() {
-        
         return data.size(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -29,8 +32,12 @@ public class TableDangKyMonHoc<T> extends AbstractTableModel{
     }
 
     @Override
+    public String getColumnName(int column) {
+        return tenCot[column]; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 }

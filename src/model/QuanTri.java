@@ -11,7 +11,8 @@ import java.util.Objects;
  *
  * @author Chien
  */
-public class QuanTri implements Serializable{
+public class QuanTri implements Serializable {
+
     private String maQuanTri;
     private String tenQuanTri;
     private String chucVu;
@@ -70,6 +71,5 @@ public class QuanTri implements Serializable{
         final QuanTri other = (QuanTri) obj;
         return Objects.equals(this.maQuanTri, other.maQuanTri);
     }
-    
-    
+
 }

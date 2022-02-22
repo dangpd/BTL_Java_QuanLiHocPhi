@@ -4,14 +4,11 @@ import java.io.Serializable;
 
 public class TaiKhoan implements Serializable {
 
-    private static final long serialVersionUID = 6529685098267757690L;
-
     private String maTaiKhoan;
     private String matKhau;
     private String quyen;
 
     public TaiKhoan(String maTaiKhoan, String matKhau) {
-        super();
         this.maTaiKhoan = maTaiKhoan;
         this.matKhau = matKhau;
     }

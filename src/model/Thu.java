@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Thu {
+public abstract class Thu implements Serializable{
 
     protected String maKhoanThu;
     protected String tenKhoanThu;
@@ -62,4 +63,5 @@ public abstract class Thu {
         final Thu other = (Thu) obj;
         return Objects.equals(this.maKhoanThu, other.maKhoanThu);
     }
+
 }

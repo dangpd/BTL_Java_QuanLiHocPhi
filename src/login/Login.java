@@ -31,9 +31,9 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         con = new Controller();
-        dsTaiKhoan = con.docFile("src/data/taikhoan.txt");
-        dsSV = con.docFile("src/data/sinhvien.txt");
-        dsQT = con.docFile("src/data/quantri.txt");
+        dsTaiKhoan = con.docFile("src/TextJava/taikhoan.txt");
+        dsSV = con.docFile("src/TextJava/sinhvien.txt");
+        dsQT = con.docFile("src/TextJava/quantri.txt");
         initComponents();
         this.setLocationRelativeTo(null);
     }

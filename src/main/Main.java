@@ -11,14 +11,12 @@ import model.SinhVien;
 import controller.Controller;
 import model.CongNo;
 import model.HocPhan;
-import model.LichSuGD;
 import model.LopHocPhan;
 import model.QuanTri;
 import model.TaiKhoan;
 import model.TaiKhoanTien;
 import model.Thu;
 import model.ThuTheoDangKy;
-
 
 /**
  *
@@ -37,13 +35,18 @@ public class Main {
         HocPhan hocPhan3 = new HocPhan("HP3", "Tieng anh", 5, "LT");
         HocPhan hocPhan4 = new HocPhan("HP4", "Lap trinh php", 3, "TH");
         HocPhan hocPhan5 = new HocPhan("HP5", "Lap trinh C#", 3, "TH");
-        con.ghiFile(hocPhans, "src/data/hocphan.txt");
+        hocPhans.add(hocPhan1);
+        hocPhans.add(hocPhan2);
+        hocPhans.add(hocPhan3);
+        hocPhans.add(hocPhan4);
+        hocPhans.add(hocPhan5);
+        con.ghiFile(hocPhans, "src/TextJava/hocphan.txt");
 
         //Khoa
         ArrayList<Khoa> khoas = new ArrayList<Khoa>();
         Khoa khoa = new Khoa("CNTT", "Công nghệ thông tin");
         khoas.add(khoa);
-        con.ghiFile(khoas, "src/data/khoa.txt");
+        con.ghiFile(khoas, "src/TextJava/khoa.txt");
 
         //Lop
         ArrayList<Lop> lops = new ArrayList<Lop>();
@@ -51,7 +54,7 @@ public class Main {
         Lop lop2 = new Lop("L02", "HTTT2", 20, khoa);
         lops.add(lop1);
         lops.add(lop2);
-        con.ghiFile(lops, "src/data/lop.txt");
+        con.ghiFile(lops, "src/TextJava/lop.txt");
 
         //TaiKhoanTien
         ArrayList<TaiKhoanTien> taiKhoanTiens = new ArrayList<TaiKhoanTien>();
@@ -60,7 +63,12 @@ public class Main {
         TaiKhoanTien tktien3 = new TaiKhoanTien("tktien3", 100000000);
         TaiKhoanTien tktien4 = new TaiKhoanTien("tktien4", 100000000);
         TaiKhoanTien tktien5 = new TaiKhoanTien("tktien6", 100000000);
-        con.ghiFile(taiKhoanTiens, "src/data/taikhoantien.txt");
+        taiKhoanTiens.add(tktien1);
+        taiKhoanTiens.add(tktien2);
+        taiKhoanTiens.add(tktien3);
+        taiKhoanTiens.add(tktien4);
+        taiKhoanTiens.add(tktien5);
+        con.ghiFile(taiKhoanTiens, "src/TextJava/taikhoantien.txt");
 
         //SinhVien
         ArrayList<SinhVien> sinhViens = new ArrayList<SinhVien>();
@@ -74,19 +82,19 @@ public class Main {
         sinhViens.add(sinhVien3);
         sinhViens.add(sinhVien4);
         sinhViens.add(sinhVien5);
-        con.ghiFile(sinhViens, "src/data/sinhvien.txt");
+        con.ghiFile(sinhViens, "src/TextJava/sinhvien.txt");
 
         //LopHocPhan(SinhVien sinhVien, HocPhan hocPhan)
         ArrayList<LopHocPhan> lopHocPhans = new ArrayList<LopHocPhan>();
         LopHocPhan lopHocPhan1 = new LopHocPhan(sinhVien1, hocPhan1);
         LopHocPhan lopHocPhan2 = new LopHocPhan(sinhVien2, hocPhan3);
-        LopHocPhan lopHocPhan3 = new LopHocPhan(sinhVien1, hocPhan1);
+        LopHocPhan lopHocPhan3 = new LopHocPhan(sinhVien1, hocPhan5);
         LopHocPhan lopHocPhan4 = new LopHocPhan(sinhVien3, hocPhan2);
         lopHocPhans.add(lopHocPhan1);
         lopHocPhans.add(lopHocPhan2);
         lopHocPhans.add(lopHocPhan3);
         lopHocPhans.add(lopHocPhan4);
-        con.ghiFile(lopHocPhans, "src/data/lophocphan.txt");
+        con.ghiFile(lopHocPhans, "src/TextJava/lophocphan.txt");
 
         //QuanTri
         ArrayList<QuanTri> quanTris = new ArrayList<QuanTri>();
@@ -100,7 +108,7 @@ public class Main {
         quanTris.add(qt3);
         quanTris.add(qt4);
         quanTris.add(qt5);
-        con.ghiFile(quanTris, "src/data/quantri.txt");
+        con.ghiFile(quanTris, "src/TextJava/quantri.txt");
 
         //TaiKhoan
         ArrayList<TaiKhoan> taiKhoans = new ArrayList<TaiKhoan>();
@@ -124,8 +132,8 @@ public class Main {
         taiKhoans.add(tk8);
         taiKhoans.add(tk9);
         taiKhoans.add(tk10);
-        con.ghiFile(taiKhoans, "src/data/taikhoan.txt");
-        
+        con.ghiFile(taiKhoans, "src/TextJava/taikhoan.txt");
+
         //Thu theo đăn ký
         ArrayList<Thu> thuTheoDangKy = new ArrayList<>();
         Thu thuTheoDangKy1 = new ThuTheoDangKy(1, lopHocPhan1);
@@ -156,6 +164,6 @@ public class Main {
             ThuTheoDangKy get = tks.get(i);
             System.out.println(get.getMaKhoanThu());
         }
-
+        
     }
 }

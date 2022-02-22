@@ -252,7 +252,7 @@ public class SinhVienMain extends javax.swing.JFrame {
 
     private void btnNopHocPhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNopHocPhiActionPerformed
         // TODO add your handling code here:
-        NopHocPhi nopHocPhi = new NopHocPhi(this, rootPaneCheckingEnabled);
+        NopHocPhi nopHocPhi = new NopHocPhi(this, rootPaneCheckingEnabled, sinhVien);
         nopHocPhi.setVisible(true);
     }//GEN-LAST:event_btnNopHocPhiActionPerformed
 
@@ -264,7 +264,7 @@ public class SinhVienMain extends javax.swing.JFrame {
 
     private void btnDangKyMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyMonHocActionPerformed
         // TODO add your handling code here:
-        DangKyMonHoc dangKyMonHoc = new DangKyMonHoc(this, rootPaneCheckingEnabled);
+        DangKyMonHoc dangKyMonHoc = new DangKyMonHoc(this, rootPaneCheckingEnabled,sinhVien);
         dangKyMonHoc.setVisible(true);
     }//GEN-LAST:event_btnDangKyMonHocActionPerformed
 
