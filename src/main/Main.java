@@ -156,7 +156,6 @@ public class Main {
         congNos.add(congNo2);
         congNos.add(congNo3);
         congNos.add(congNo4);
-        System.out.println(congNos.get(1).getSinhVien().getHoTen());
         con.ghiFile(congNos, "src/TextJava/congno.txt");
 
         ArrayList<ThuTheoDangKy> tks = con.docFile("src/TextJava/thutheodangky.txt");

@@ -29,9 +29,9 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtSoTienCanNap = new javax.swing.JTextField();
-        txtMaTaiKhoan = new javax.swing.JTextField();
         btnHuy = new javax.swing.JButton();
         btnNapTien = new javax.swing.JButton();
+        txtMatKhau = new javax.swing.JPasswordField();
 
         setMinimumSize(new java.awt.Dimension(320, 160));
         setTitle("Nạp tiền vào tài khoản");
@@ -42,13 +42,12 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
         });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Số tiền cần nạp");
+        jLabel1.setText("Mật khẩu");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
 
-        jLabel2.setText("Nhập mã tài khoản");
+        jLabel2.setText("Số tiền cần nạp");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 20));
-        add(txtSoTienCanNap, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 140, -1));
-        add(txtMaTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 140, -1));
+        add(txtSoTienCanNap, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 140, -1));
 
         btnHuy.setBackground(new java.awt.Color(255, 255, 255));
         btnHuy.setText("Hủy");
@@ -62,6 +61,9 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
             }
         });
         add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
+
+        txtMatKhau.setText("jPasswordField1");
+        add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 140, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -102,7 +104,7 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
     private javax.swing.JButton btnNapTien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtMaTaiKhoan;
+    private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtSoTienCanNap;
     // End of variables declaration//GEN-END:variables
 }

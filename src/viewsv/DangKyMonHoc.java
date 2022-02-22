@@ -176,6 +176,7 @@ public class DangKyMonHoc extends java.awt.Dialog {
             con.ghiFile(lopHocPhans, "src/TextJava/lophocphan.txt");
             con.ghiFile(dsThuTheoDangKy, "src/TextJava/thutheodangky.txt");
             con.ghiFile(congNos, "src/TextJava/congno.txt");
+            sinhVienMain.loadData();
             throw new Exception("Đăng ký thành công môn học " + hp.getTenHocPhan());
 
         } catch (Exception e) {

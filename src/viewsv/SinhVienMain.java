@@ -28,11 +28,15 @@ public class SinhVienMain extends javax.swing.JFrame {
         this.sinhVien = sv;
         initComponents();
         System.out.println(sinhVien.toString());
+        loadData();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public void loadData() {
         lblHoTen.setText(sinhVien.getHoTen());
         lblMaSinhVien.setText(sinhVien.getMaSinhVien());
         lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
         lblTenLop.setText(sinhVien.getLop().getTenLop());
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -270,13 +274,13 @@ public class SinhVienMain extends javax.swing.JFrame {
 
     private void btnRutHocPhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutHocPhanActionPerformed
         // TODO add your handling code here:
-        RutHocPhan rutHocPhan = new RutHocPhan(this, rootPaneCheckingEnabled);
+        RutHocPhan rutHocPhan = new RutHocPhan(this, rootPaneCheckingEnabled, sinhVien);
         rutHocPhan.setVisible(true);
     }//GEN-LAST:event_btnRutHocPhanActionPerformed
 
     private void btnRutTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutTienActionPerformed
         // TODO add your handling code here:
-        RutTien rutTien = new RutTien(this, rootPaneCheckingEnabled);
+        RutTien rutTien = new RutTien(this, rootPaneCheckingEnabled, sinhVien);
         rutTien.setVisible(true);
     }//GEN-LAST:event_btnRutTienActionPerformed
 

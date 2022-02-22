@@ -4,19 +4,38 @@
  */
 package viewsv;
 
+import controller.Controller;
+import java.awt.Frame;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import model.CongNo;
+import model.SinhVien;
+import model.TaiKhoan;
+import model.Thu;
+import model.ThuTheoDangKy;
+
 /**
  *
  * @author Chien
  */
 public class RutTien extends java.awt.Dialog {
 
+    private SinhVien sinhVien;
+    private ArrayList<SinhVien> dsSinhVien;
+    private ArrayList<TaiKhoan> dsTaiKhoan;
+    private Controller con;
+
     /**
      * Creates new form RutTien
      */
-    
     private SinhVienMain sinhVienMain;
-    public RutTien(java.awt.Frame parent, boolean modal) {
+
+    public RutTien(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
         super(parent, modal);
+        this.sinhVien = sinhVien;
+        this.con = new Controller();
+        this.dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
+        this.dsTaiKhoan = con.docFile("src/TextJava/taikhoan.txt");
         initComponents();
         this.setLocationRelativeTo(null);
         sinhVienMain = (SinhVienMain) parent;
@@ -33,10 +52,12 @@ public class RutTien extends java.awt.Dialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtSoTienCanRut = new javax.swing.JTextField();
-        txtMaTaiKhoan = new javax.swing.JTextField();
         btnHuy = new javax.swing.JButton();
-        btnRutTien = new javax.swing.JButton();
+        btnNapTien = new javax.swing.JButton();
+        txtMatKhau = new javax.swing.JPasswordField();
 
+        setMinimumSize(new java.awt.Dimension(290, 150));
+        setPreferredSize(new java.awt.Dimension(320, 133));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -45,21 +66,31 @@ public class RutTien extends java.awt.Dialog {
         });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Số tiền cần rút");
+        jLabel1.setText("Mật khẩu");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
 
-        jLabel2.setText("Nhập mã tài khoản");
+        jLabel2.setText("Số tiền cần rút");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 20));
-        add(txtSoTienCanRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 140, -1));
-        add(txtMaTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 140, -1));
+        add(txtSoTienCanRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 140, -1));
 
         btnHuy.setBackground(new java.awt.Color(255, 255, 255));
         btnHuy.setText("Hủy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
         add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 110, 80, -1));
 
-        btnRutTien.setBackground(new java.awt.Color(255, 255, 255));
-        btnRutTien.setText("Rút tiền");
-        add(btnRutTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
+        btnNapTien.setBackground(new java.awt.Color(255, 255, 255));
+        btnNapTien.setText("Rút tiền");
+        btnNapTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNapTienActionPerformed(evt);
+            }
+        });
+        add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
+        add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 140, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -72,30 +103,65 @@ public class RutTien extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_closeDialog
 
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void btnNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNapTienActionPerformed
+        // TODO add your handling code here:
+        Frame frame = new Frame();
+        try {
+            if (txtSoTienCanRut.getText().equals("") || txtMatKhau.getText().equals("")) {
+                throw new Exception("Không được để trống số tiền cấn rút hoặc tài khoản");
+            }
+            double soDu = sinhVien.getSoTienTK();
+            double soTienRut = Double.parseDouble(txtSoTienCanRut.getText());
+            if (soTienRut > soDu) {
+                throw new Exception("Số tiền cần rút không được vượt quá số dư của tài khoản");
+            }
+            TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(new TaiKhoan(sinhVien.getMaSinhVien(), "", "")));
+            if(!tk.getMatKhau().equals(txtMatKhau.getText()))
+                throw new Exception("Mật khẩu không chính xác");
+
+            int output = JOptionPane.showConfirmDialog(frame,
+                    "Xác nhận rút tiền", "Lựa chọn", JOptionPane.YES_NO_OPTION);
+            if (output == JOptionPane.YES_OPTION) {
+                sinhVien.getTaiKhoanTien().setSoDu(sinhVien.getTaiKhoanTien().getSoDu() + soTienRut);
+                sinhVien.setSoTienTK(soDu - soTienRut);
+                dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
+                con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
+                sinhVienMain.loadData();
+                throw new Exception("Rút thành công");                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnNapTienActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                RutTien dialog = new RutTien(new java.awt.Frame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                RutTien dialog = new RutTien(new java.awt.Frame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;
-    private javax.swing.JButton btnRutTien;
+    private javax.swing.JButton btnNapTien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtMaTaiKhoan;
+    private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtSoTienCanRut;
     // End of variables declaration//GEN-END:variables
 }
