@@ -156,6 +156,7 @@ public class Login extends javax.swing.JFrame {
                 int index = dsTaiKhoan.indexOf(temp);
                 if (index < 0) {
                     JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
+                    return;
                 } else {
                     temp = dsTaiKhoan.get(index);
                     if (temp.getQuyen().equals("QT")) {
