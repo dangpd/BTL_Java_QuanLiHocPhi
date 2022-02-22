@@ -35,7 +35,7 @@ public class SinhVienMain extends javax.swing.JFrame {
     public void loadData() {
         lblHoTen.setText(sinhVien.getHoTen());
         lblMaSinhVien.setText(sinhVien.getMaSinhVien());
-        lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
+        lblSoDuTK.setText(String.format("%.2f", sinhVien.getSoTienTK()));
         lblTenLop.setText(sinhVien.getLop().getTenLop());
     }
 
