@@ -12,6 +12,10 @@ public class ThuChiDauNam extends Thu implements Serializable {
         this.soDanhMaTuDong = soDanhMaTuDong;
     }
 
+    public ThuChiDauNam(String maKhoanThu, String tenKhoanThu, double gia) {
+        super(maKhoanThu, tenKhoanThu, gia);
+    }
+    
     public ThuChiDauNam(Khoa khoa, int soDanhMaTuDong) {
         this.khoa = khoa;
         this.soDanhMaTuDong = soDanhMaTuDong;

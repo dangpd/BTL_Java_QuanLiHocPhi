@@ -5,7 +5,10 @@
 package viewqt;
 
 import controller.Controller;
+import java.awt.Frame;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import model.TableModel;
 import model.ThuChiDauNam;
 
@@ -14,10 +17,11 @@ import model.ThuChiDauNam;
  * @author Chien
  */
 public class QLThuChiDauNam extends javax.swing.JFrame {
-    
+
     private Controller con;
     private TableModel<ThuChiDauNam> tableModelThuChiDauNam;
     private ArrayList<ThuChiDauNam> dsThuChiDauNam;
+    private String maKhoanThu = "";
 
     /**
      * Creates new form QLThuChiDauNam
@@ -26,13 +30,13 @@ public class QLThuChiDauNam extends javax.swing.JFrame {
         con = new Controller();
         dsThuChiDauNam = con.docFile("src/TextJava/thuchidaunam.txt");
         initComponents();
-        
+
         loadDataTable();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
-    
-    public void loadDataTable(){
+
+    public void loadDataTable() {
         dsThuChiDauNam = con.docFile("src/TextJava/thuchidaunam.txt");
         String[] tenCot = {"Mã khoản thu", "Tên khoản thu", "Khoa", "Giá"};
         this.tableModelThuChiDauNam = new TableModel<ThuChiDauNam>(this.dsThuChiDauNam, tenCot) {
@@ -81,6 +85,11 @@ public class QLThuChiDauNam extends javax.swing.JFrame {
             }
         });
 
+        tableThuChiDauNam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableThuChiDauNamMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableThuChiDauNam);
 
         btnThem.setBackground(new java.awt.Color(255, 255, 255));
@@ -95,6 +104,11 @@ public class QLThuChiDauNam extends javax.swing.JFrame {
         btnSua.setBackground(new java.awt.Color(255, 255, 255));
         btnSua.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnThoat.setBackground(new java.awt.Color(255, 255, 255));
         btnThoat.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -168,6 +182,25 @@ public class QLThuChiDauNam extends javax.swing.JFrame {
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (maKhoanThu.equals("")) 
+                throw new Exception("Vui lòng chọn khoản thu cần sửa");
+            SuaThuChiDauNam suaThuChiDauNam = new SuaThuChiDauNam(this, rootPaneCheckingEnabled, maKhoanThu);
+            suaThuChiDauNam.setVisible(true);
+        } catch (Exception e) {
+            Frame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void tableThuChiDauNamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableThuChiDauNamMouseClicked
+        // TODO add your handling code here:
+        int row = tableThuChiDauNam.getSelectedRow();
+        maKhoanThu = (String) tableThuChiDauNam.getValueAt(row, 0);
+    }//GEN-LAST:event_tableThuChiDauNamMouseClicked
 
     /**
      * @param args the command line arguments

@@ -7,6 +7,8 @@ package viewqt;
 import controller.Controller;
 import java.awt.Frame;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.JOptionPane;
 import model.CongNo;
 import model.Khoa;
@@ -18,6 +20,7 @@ import model.ThuChiDauNam;
  * @author Chien
  */
 public class SuaThuChiDauNam extends java.awt.Dialog {
+
     private String khoanThuCanSua;
     private QLThuChiDauNam quanLyThuChiDauNam = new QLThuChiDauNam();
     private ArrayList<Khoa> dsKhoa;
@@ -25,15 +28,24 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
     private ArrayList<CongNo> dsCongNo;
     private ArrayList<SinhVien> dsSinhVien;
     private Controller con;
-
+    private Khoa khoaDuocChon;
 
     /**
      * Creates new form SuaThuChiDauNam
      */
-    public SuaThuChiDauNam(java.awt.Frame parent, boolean modal,String khoanThuCanSua) {
+    public SuaThuChiDauNam(java.awt.Frame parent, boolean modal, String khoanThuCanSua) {
         super(parent, modal);
         this.khoanThuCanSua = khoanThuCanSua;
+        con = new Controller();
+        khoaDuocChon = null;
+        quanLyThuChiDauNam = (QLThuChiDauNam) parent;
+        dsKhoa = con.docFile("src/TextJava/khoa.txt");
+        dsThuChiDauNam = con.docFile("src/TextJava/thuchidaunam.txt");
+        dsCongNo = con.docFile("src/TextJava/congno.txt");
+        dsSinhVien = con.docFile("src/TextJava/sinhVien.txt");
         initComponents();
+        showComBox();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -51,7 +63,7 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
         jLabel3 = new javax.swing.JLabel();
         cboKhoa = new javax.swing.JComboBox<>();
         btnThoa = new javax.swing.JButton();
-        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(350, 230));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -96,14 +108,14 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
         });
         add(btnThoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
 
-        btnThem.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        btnThem.setText("Thêm");
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
-        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -123,7 +135,7 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
         for (int i = 0; i < dsKhoa.size(); i++) {
             Khoa get = dsKhoa.get(i);
             if (get.getTenKhoa().equals(tenKhoa)) {
-//                khoaDuocChon = get;
+                khoaDuocChon = get;
                 break;
             }
         }
@@ -135,50 +147,42 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_btnThoaActionPerformed
 
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         Frame frame = new Frame();
 
         try {
-//            if (txtTenKhoanThu.getText().equals("") || txtGia.getText().equals("") || khoaDuocChon == null) {
-//                throw new Exception("Vui lòng nhập đầy đủ thông tin");
-//            }
-//
-//            int soMax;
-//            if (dsThuChiDauNam.size() != 0) {
-//                ThuChiDauNam maThuChiDauNamMax = Collections.max(dsThuChiDauNam, new Comparator<ThuChiDauNam>() {
-//                    @Override
-//                    public int compare(ThuChiDauNam o1, ThuChiDauNam o2) {
-//                        if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong()) {
-//                            return 1;
-//                        } else if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong()) {
-//                            return 0;
-//                        }
-//                        return -1;
-//                    }
-//
-//                });
-//                soMax = maThuChiDauNamMax.getSoDanhMaTuDong();
-//            }
-//            else
-//            soMax = 0;
-//            ThuChiDauNam thuChiDauNam = new ThuChiDauNam(khoaDuocChon, soMax + 1, txtTenKhoanThu.getText(), Double.parseDouble(txtGia.getText()));
-//            dsThuChiDauNam.add(thuChiDauNam);
-//            for (int i = 0; i < dsSinhVien.size(); i++) {
-//                SinhVien get = dsSinhVien.get(i);
-//                if (get.getLop().getKhoa().getMaKhoa().equals(khoaDuocChon.getMaKhoa())) {
-//                    CongNo congNo = new CongNo(get, thuChiDauNam, false);
-//                    dsCongNo.add(congNo);
-//                }
-//            }
-//            con.ghiFile(dsThuChiDauNam, "src/TextJava/thuchidaunam.txt");
-//            con.ghiFile(dsCongNo, "src/TextJava/congno.txt");
-//            quanLyThuChiDauNam.loadDataTable();
+            if (txtTenKhoanThu.getText().equals("") || txtGia.getText().equals("") || khoaDuocChon == null) {
+                throw new Exception("Vui lòng nhập đầy đủ thông tin");
+            }
+            int output = JOptionPane.showConfirmDialog(frame,
+                    "Xác nhận sửa", "Lựa chọn", JOptionPane.YES_NO_OPTION);
+            if (output == JOptionPane.YES_OPTION) {
+                ThuChiDauNam thuChiDauNam = new ThuChiDauNam(khoanThuCanSua, "", 0);
+                thuChiDauNam = dsThuChiDauNam.get(dsThuChiDauNam.indexOf(thuChiDauNam));
+                double giaSua = Double.parseDouble(txtGia.getText());
+                String tenKhoanThuSua = txtTenKhoanThu.getText();
+                thuChiDauNam.setGia(giaSua);
+                thuChiDauNam.setTenKhoanThu(tenKhoanThuSua);
+                thuChiDauNam.setKhoa(khoaDuocChon);
+
+                dsThuChiDauNam.set(dsThuChiDauNam.indexOf(thuChiDauNam), thuChiDauNam);
+                for (int i = 0; i < dsSinhVien.size(); i++) {
+                    SinhVien get = dsSinhVien.get(i);
+                    if (get.getLop().getKhoa().getMaKhoa().equals(khoaDuocChon.getMaKhoa())) {
+                        CongNo congNo = new CongNo(get, thuChiDauNam, false);
+                        dsCongNo.set(dsCongNo.indexOf(congNo), congNo);
+                    }
+                }
+                con.ghiFile(dsThuChiDauNam, "src/TextJava/thuchidaunam.txt");
+                con.ghiFile(dsCongNo, "src/TextJava/congno.txt");
+                quanLyThuChiDauNam.loadDataTable();
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_btnThemActionPerformed
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,9 +201,8 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
 //        });
 //    }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThoa;
     private javax.swing.JComboBox<String> cboKhoa;
     private javax.swing.JLabel jLabel1;
@@ -208,4 +211,11 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtTenKhoanThu;
     // End of variables declaration//GEN-END:variables
+
+    private void showComBox() {
+        for (int i = 0; i < dsKhoa.size(); i++) {
+            Khoa get = dsKhoa.get(i);
+            cboKhoa.addItem(get.getTenKhoa());
+        }
+    }
 }
