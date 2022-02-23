@@ -15,14 +15,14 @@ import model.SinhVien;
 import model.TableModel;
 
 public class NopHocPhi extends java.awt.Dialog {
-
+    
     private SinhVienMain sinhVienMain;
     private SinhVien sinhVien;
     private TableModel<CongNo> congNoThuModel;
     private ArrayList<CongNo> congNos = new ArrayList<>();
     private Controller con;
     private String maKhoanThu;
-
+    
     public NopHocPhi(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
         super(parent, modal);
         this.sinhVienMain = (SinhVienMain) parent;
@@ -33,10 +33,10 @@ public class NopHocPhi extends java.awt.Dialog {
         loadTable();
         this.setLocationRelativeTo(null);
     }
-
+    
     public void loadTable() {
         String[] tenCot = {"Mã khoản thu", "Tên khoản thu", "Giá"};
-        List<CongNo> temp = congNos.stream().filter(cn -> cn.isKiemTraThu() == false).toList();
+        List<CongNo> temp = congNos.stream().filter(cn -> cn.isKiemTraThu() == false && cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())).toList();
         ArrayList<CongNo> congNoChuaThanhToan = new ArrayList<>();
         congNoChuaThanhToan.addAll(temp);
         this.congNoThuModel = new TableModel<CongNo>(congNoChuaThanhToan, tenCot) {
@@ -152,17 +152,25 @@ public class NopHocPhi extends java.awt.Dialog {
                 double gia = (double) tableCongNoThu.getValueAt(row, 2);
                 double tien = sinhVien.getSoTienTK();
                 if (gia > tien) {
-                    JOptionPane.showMessageDialog(this, "Só tiền trong tài khoản không đủ, vui lòng nạp thêm tièn");
+                    JOptionPane.showMessageDialog(this, "Số tiền trong tài khoản không đủ, vui lòng nạp thêm tièn");
                 } else {
                     sinhVien.setSoTienTK(tien - gia);
                     System.out.println(sinhVien.toString());
                     lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
-                    congNos.get(tableCongNoThu.convertRowIndexToModel(tableCongNoThu.getSelectedRow())).setKiemTraThu(true);
+                    String maKT = (String) tableCongNoThu.getValueAt(tableCongNoThu.getSelectedRow(), 0);
+                    for (CongNo cn : congNos) {
+                        if (cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())
+                                && cn.getKhoanThu().getMaKhoanThu().equals(maKT)) {
+                            cn.setKiemTraThu(true);
+                        }
+                    }
                     loadTable();
+                    con.ghiFile(congNos, "src/TextJava/congno.txt");
+                    sinhVienMain.loadData();
                     JOptionPane.showMessageDialog(this, "Thanh toán thành công");
                 }
             }
-
+            
         } catch (Exception e) {
             Frame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -193,7 +201,13 @@ public class NopHocPhi extends java.awt.Dialog {
                 JOptionPane.showMessageDialog(this, "Só tiền trong tài khoản không đủ, vui lòng nạp thêm tièn");
             } else {
                 for (int i = 0; i < tableCongNoThu.getRowCount(); i++) {
-                    congNos.get(tableCongNoThu.convertRowIndexToModel(i)).setKiemTraThu(true);
+                    String maKT = (String) tableCongNoThu.getValueAt(i, 0);
+                    for (CongNo cn : congNos) {
+                        if (cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())
+                                && cn.getKhoanThu().getMaKhoanThu().equals(maKT)) {
+                            cn.setKiemTraThu(true);
+                        }
+                    }
                 }
                 sinhVien.setSoTienTK(tien - tong);
                 lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));

@@ -4,18 +4,34 @@
  */
 package viewsv;
 
+import controller.Controller;
+import java.awt.Frame;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import model.SinhVien;
+import model.TaiKhoan;
+import model.TaiKhoanTien;
+
 public class NapTienVaoTaiKhoan extends java.awt.Dialog {
-    
+    private SinhVien sinhVien;
+    private ArrayList<SinhVien> dsSinhVien;
+    private ArrayList<TaiKhoan> dsTaiKhoan;
+    private Controller con;
+
 
     /**
      * Creates new form NapTienVaoTaiKhoan
      */
     private SinhVienMain sinhVienMain;
-    public NapTienVaoTaiKhoan(java.awt.Frame parent, boolean modal) {
+    public NapTienVaoTaiKhoan(java.awt.Frame parent, boolean modal,SinhVien sinhVien) {
         super(parent, modal);
+        this.sinhVien = sinhVien;
+        this.con = new Controller();
+        this.dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
+        this.dsTaiKhoan = con.docFile("src/TextJava/taikhoan.txt");
         initComponents();
-        sinhVienMain = (SinhVienMain) parent;
         this.setLocationRelativeTo(null);
+        sinhVienMain = (SinhVienMain) parent;
     }
 
     /**
@@ -51,6 +67,11 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
 
         btnHuy.setBackground(new java.awt.Color(255, 255, 255));
         btnHuy.setText("Hủy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
         add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 110, 80, -1));
 
         btnNapTien.setBackground(new java.awt.Color(255, 255, 255));
@@ -61,8 +82,6 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
             }
         });
         add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
-
-        txtMatKhau.setText("jPasswordField1");
         add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 140, -1));
 
         pack();
@@ -78,25 +97,53 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
 
     private void btnNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNapTienActionPerformed
         // TODO add your handling code here:
+        Frame frame = new Frame();
+        try {
+            if (txtSoTienCanNap.getText().equals("") || txtMatKhau.getText().equals("")) {
+                throw new Exception("Không được để trống số tiền cấn nạp hoặc tài khoản");
+            }
+            double soDu = sinhVien.getSoTienTK();
+            double soTienNap = Double.parseDouble(txtSoTienCanNap.getText());
+            TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(new TaiKhoan(sinhVien.getMaSinhVien(), "", "")));
+            if(!tk.getMatKhau().equals(txtMatKhau.getText()))
+                throw new Exception("Mật khẩu không chính xác");
+
+            int output = JOptionPane.showConfirmDialog(frame,"Xác nhận nạp tiền", "Lựa chọn", JOptionPane.YES_NO_OPTION);
+            if (output == JOptionPane.YES_OPTION) {
+                sinhVien.getTaiKhoanTien().setSoDu(sinhVien.getTaiKhoanTien().getSoDu() - soTienNap);
+                sinhVien.setSoTienTK(soDu + soTienNap);
+                dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
+                con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
+                sinhVienMain.loadData();
+                throw new Exception("Nạp thành công");                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
         
     }//GEN-LAST:event_btnNapTienActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnHuyActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                NapTienVaoTaiKhoan dialog = new NapTienVaoTaiKhoan(new java.awt.Frame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                NapTienVaoTaiKhoan dialog = new NapTienVaoTaiKhoan(new java.awt.Frame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//            }
+//        });
+//    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

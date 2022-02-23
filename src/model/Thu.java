@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public abstract class Thu implements Serializable {
 
+    protected String maSV;
     protected String maKhoanThu;
     protected String tenKhoanThu;
     protected double gia;

@@ -36,6 +36,7 @@ public class DangKyMonHoc extends java.awt.Dialog {
     private String tenMonDangKi;
     private int tinChi;
     private double gia;
+
     /**
      * Creates new form DangKyMonHoc
      */
@@ -153,26 +154,27 @@ public class DangKyMonHoc extends java.awt.Dialog {
             if (lopHocPhans.contains(lhp)) {
                 throw new Exception("Môn học này đã được bạn đăng ký");
             }
-            
+
             hp = hocPhans.get(hocPhans.indexOf(hp));
             lhp = new LopHocPhan(sinhVien, hp);
-            
-            ThuTheoDangKy maDangKyHocPhanMax =Collections.max(dsThuTheoDangKy,new Comparator<ThuTheoDangKy>(){
+
+            ThuTheoDangKy maDangKyHocPhanMax = Collections.max(dsThuTheoDangKy, new Comparator<ThuTheoDangKy>() {
                 @Override
                 public int compare(ThuTheoDangKy o1, ThuTheoDangKy o2) {
-                    if(o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong())
+                    if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong()) {
                         return 1;
-                    else if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong())
+                    } else if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong()) {
                         return 0;
+                    }
                     return -1;
                 }
-                
+
             });
-            ThuTheoDangKy thuTheoDK = new ThuTheoDangKy(maDangKyHocPhanMax.getSoDanhMaTuDong()+1, lhp);
-            CongNo congNo = new CongNo(sinhVien,thuTheoDK, false);
+            ThuTheoDangKy thuTheoDK = new ThuTheoDangKy(maDangKyHocPhanMax.getSoDanhMaTuDong() + 1, lhp, sinhVien.getMaSinhVien());
+            CongNo congNo = new CongNo(sinhVien, thuTheoDK, false);
             lopHocPhans.add(lhp);
             dsThuTheoDangKy.add(thuTheoDK);
-            congNos.add(congNo);   
+            congNos.add(congNo);
             con.ghiFile(lopHocPhans, "src/TextJava/lophocphan.txt");
             con.ghiFile(dsThuTheoDangKy, "src/TextJava/thutheodangky.txt");
             con.ghiFile(congNos, "src/TextJava/congno.txt");
@@ -206,7 +208,6 @@ public class DangKyMonHoc extends java.awt.Dialog {
 //            }
 //        });
 //    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangKy;

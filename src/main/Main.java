@@ -136,10 +136,10 @@ public class Main {
 
         //Thu theo đăn ký
         ArrayList<Thu> thuTheoDangKy = new ArrayList<>();
-        Thu thuTheoDangKy1 = new ThuTheoDangKy(1, lopHocPhan1);
-        Thu thuTheoDangKy2 = new ThuTheoDangKy(2, lopHocPhan2);
-        Thu thuTheoDangKy3 = new ThuTheoDangKy(3, lopHocPhan3);
-        Thu thuTheoDangKy4 = new ThuTheoDangKy(4, lopHocPhan4);
+        Thu thuTheoDangKy1 = new ThuTheoDangKy(1, lopHocPhan1, "001");
+        Thu thuTheoDangKy2 = new ThuTheoDangKy(2, lopHocPhan2, "002");
+        Thu thuTheoDangKy3 = new ThuTheoDangKy(3, lopHocPhan3, "001");
+        Thu thuTheoDangKy4 = new ThuTheoDangKy(4, lopHocPhan4, "002");
         thuTheoDangKy.add(thuTheoDangKy1);
         thuTheoDangKy.add(thuTheoDangKy2);
         thuTheoDangKy.add(thuTheoDangKy3);

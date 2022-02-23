@@ -62,8 +62,8 @@ public class RutHocPhan extends java.awt.Dialog {
         this.setLocationRelativeTo(null);
         sinhVienMain = (SinhVienMain) parent;
     }
-    
-    public void loadDataTable(){
+
+    public void loadDataTable() {
         String[] tenCot = {"Mã học phần", "Tên học phần", "Tín chỉ", "Giá"};
         this.tableModelRutHocPhan = new TableModel<HocPhan>(dsHocPhanDaDangKy, tenCot) {
             @Override
@@ -163,9 +163,9 @@ public class RutHocPhan extends java.awt.Dialog {
             if (output == JOptionPane.YES_OPTION) {
                 dsLopHocPhan.remove(dsLopHocPhan.indexOf(lhp));
                 Thu thu = new ThuTheoDangKy();
-                thu = dsThuTheoDangKy.get(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp)));
+                thu = dsThuTheoDangKy.get(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
                 dsCongNo.remove(dsCongNo.indexOf(new CongNo(sinhVien, thu, false)));
-                dsThuTheoDangKy.remove(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp)));
+                dsThuTheoDangKy.remove(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
                 dsHocPhanDaDangKy.remove(dsHocPhanDaDangKy.indexOf(hp));
                 con.ghiFile(dsLopHocPhan, "src/TextJava/lophocphan.txt");
                 con.ghiFile(dsThuTheoDangKy, "src/TextJava/thutheodangky.txt");

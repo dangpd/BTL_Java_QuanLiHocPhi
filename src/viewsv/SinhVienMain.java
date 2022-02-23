@@ -262,7 +262,7 @@ public class SinhVienMain extends javax.swing.JFrame {
 
     private void btnNapTienVaoTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNapTienVaoTaiKhoanActionPerformed
         // TODO add your handling code here:
-        NapTienVaoTaiKhoan napTienVaoTaiKhoan = new NapTienVaoTaiKhoan(this, rootPaneCheckingEnabled);
+        NapTienVaoTaiKhoan napTienVaoTaiKhoan = new NapTienVaoTaiKhoan(this, rootPaneCheckingEnabled,sinhVien);
         napTienVaoTaiKhoan.setVisible(true);
     }//GEN-LAST:event_btnNapTienVaoTaiKhoanActionPerformed
 
