@@ -166,6 +166,8 @@ public class QuanTriView extends javax.swing.JFrame {
 
     private void btnThuChiDauNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuChiDauNamActionPerformed
         // TODO add your handling code here:
+        QLThuChiDauNam thuChiDauNam = new QLThuChiDauNam();
+        thuChiDauNam.setVisible(true);
     }//GEN-LAST:event_btnThuChiDauNamActionPerformed
 
     /**

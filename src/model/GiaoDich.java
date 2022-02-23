@@ -7,14 +7,14 @@ public class GiaoDich implements Serializable {
 
     private SinhVien sinhVien;
     private Thu thuTien;
-    private TaiKhoanTien napTien;
+    private TaiKhoanTien napRutTien;
     private Date ngayNop;
-    private float soTien;
+    private String soTien;
 
-    public GiaoDich(SinhVien sinhVien, Thu thuTien, TaiKhoanTien napTien, Date ngayNop, float soTien) {
+    public GiaoDich(SinhVien sinhVien, Thu thuTien, TaiKhoanTien napTien, Date ngayNop, String soTien) {
         this.sinhVien = sinhVien;
         this.thuTien = thuTien;
-        this.napTien = napTien;
+        this.napRutTien = napTien;
         this.ngayNop = ngayNop;
         this.soTien = soTien;
     }
@@ -39,11 +39,11 @@ public class GiaoDich implements Serializable {
     }
 
     public TaiKhoanTien getNapTien() {
-        return napTien;
+        return napRutTien;
     }
 
     public void setNapTien(TaiKhoanTien napTien) {
-        this.napTien = napTien;
+        this.napRutTien = napTien;
     }
 
     public Date getNgayNop() {
@@ -54,11 +54,11 @@ public class GiaoDich implements Serializable {
         this.ngayNop = ngayNop;
     }
 
-    public float getSoTien() {
+    public String getSoTien() {
         return soTien;
     }
 
-    public void setSoTien(float soTien) {
+    public void setSoTien(String soTien) {
         this.soTien = soTien;
     }
 

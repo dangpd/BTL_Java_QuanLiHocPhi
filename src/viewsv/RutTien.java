@@ -7,8 +7,10 @@ package viewsv;
 import controller.Controller;
 import java.awt.Frame;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import model.CongNo;
+import model.GiaoDich;
 import model.SinhVien;
 import model.TaiKhoan;
 import model.Thu;
@@ -23,6 +25,7 @@ public class RutTien extends java.awt.Dialog {
     private SinhVien sinhVien;
     private ArrayList<SinhVien> dsSinhVien;
     private ArrayList<TaiKhoan> dsTaiKhoan;
+    private ArrayList<GiaoDich> dsGiaoDich;
     private Controller con;
 
     /**
@@ -36,6 +39,7 @@ public class RutTien extends java.awt.Dialog {
         this.con = new Controller();
         this.dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
         this.dsTaiKhoan = con.docFile("src/TextJava/taikhoan.txt");
+        this.dsGiaoDich = con.docFile("src/TextJava/giaodich.txt");
         initComponents();
         this.setLocationRelativeTo(null);
         sinhVienMain = (SinhVienMain) parent;
@@ -130,6 +134,7 @@ public class RutTien extends java.awt.Dialog {
                 sinhVien.getTaiKhoanTien().setSoDu(sinhVien.getTaiKhoanTien().getSoDu() + soTienRut);
                 sinhVien.setSoTienTK(soDu - soTienRut);
                 dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
+                GiaoDich giaoDich = new GiaoDich(sinhVien, null, sinhVien.getTaiKhoanTien(), new Date(), "-"+String.valueOf(soTienRut));
                 con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                 sinhVienMain.loadData();
                 throw new Exception("Rút thành công");                

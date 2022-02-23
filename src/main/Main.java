@@ -10,12 +10,14 @@ import model.Lop;
 import model.SinhVien;
 import controller.Controller;
 import model.CongNo;
+import model.GiaoDich;
 import model.HocPhan;
 import model.LopHocPhan;
 import model.QuanTri;
 import model.TaiKhoan;
 import model.TaiKhoanTien;
 import model.Thu;
+import model.ThuChiDauNam;
 import model.ThuTheoDangKy;
 
 /**
@@ -45,7 +47,9 @@ public class Main {
         //Khoa
         ArrayList<Khoa> khoas = new ArrayList<Khoa>();
         Khoa khoa = new Khoa("CNTT", "Công nghệ thông tin");
+        Khoa khoa1 = new Khoa("CK", "Cơ khí");
         khoas.add(khoa);
+        khoas.add(khoa1);
         con.ghiFile(khoas, "src/TextJava/khoa.txt");
 
         //Lop
@@ -158,11 +162,19 @@ public class Main {
         congNos.add(congNo4);
         con.ghiFile(congNos, "src/TextJava/congno.txt");
 
-        ArrayList<ThuTheoDangKy> tks = con.docFile("src/TextJava/thutheodangky.txt");
+        //GiaoDich
+        ArrayList<GiaoDich> giaoDichs = new ArrayList<>();
+        con.ghiFile(giaoDichs, "src/TextJava/giaodich.txt");
+
+        //Thu chi đầu năm
+        ArrayList<ThuChiDauNam> thuChiDauNams = new ArrayList<>();
+        con.ghiFile(thuChiDauNams, "src/TextJava/thuchidaunam.txt");
+
+        ArrayList<CongNo> tks = con.docFile("src/TextJava/congno.txt");
         for (int i = 0; i < tks.size(); i++) {
-            ThuTheoDangKy get = tks.get(i);
-            System.out.println(get.getMaKhoanThu());
+            CongNo get = tks.get(i);
+            System.out.println(get.getKhoanThu().getMaKhoanThu());
         }
-        
+
     }
 }
