@@ -48,7 +48,7 @@ public class TaiKhoan implements Serializable {
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -70,6 +70,5 @@ public class TaiKhoan implements Serializable {
         final TaiKhoan other = (TaiKhoan) obj;
         return Objects.equals(this.maTaiKhoan, other.maTaiKhoan);
     }
-
 
 }

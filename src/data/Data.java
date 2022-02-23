@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package main;
+package data;
 
 import java.util.ArrayList;
 import model.Khoa;
@@ -20,11 +16,7 @@ import model.Thu;
 import model.ThuChiDauNam;
 import model.ThuTheoDangKy;
 
-/**
- *
- * @author Chien
- */
-public class Main {
+public class Data {
 
     public static void main(String[] args) {
         Controller con = new Controller();
@@ -175,6 +167,5 @@ public class Main {
             CongNo get = tks.get(i);
             System.out.println(get.getKhoanThu().getMaKhoanThu());
         }
-
     }
 }

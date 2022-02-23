@@ -7,7 +7,6 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 
-
 public class CongNo implements Serializable {
 
     private SinhVien sinhVien;

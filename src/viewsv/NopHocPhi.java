@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/AWTForms/Dialog.java to edit this template
- */
 package viewsv;
 
 import controller.Controller;
 import java.awt.Frame;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.CongNo;
+import model.GiaoDich;
 import model.SinhVien;
 import model.TableModel;
 
@@ -20,6 +18,8 @@ public class NopHocPhi extends java.awt.Dialog {
     private SinhVien sinhVien;
     private TableModel<CongNo> congNoThuModel;
     private ArrayList<CongNo> congNos = new ArrayList<>();
+    private ArrayList<GiaoDich> giaoDichs;
+    private ArrayList<SinhVien> dsSinhViens;
     private Controller con;
     private String maKhoanThu = "";
 
@@ -28,7 +28,9 @@ public class NopHocPhi extends java.awt.Dialog {
         this.sinhVienMain = (SinhVienMain) parent;
         this.sinhVien = sinhVien;
         this.con = new Controller();
-        this.congNos = con.docFile("src/TextJava/congno.txt");
+        congNos = con.docFile("src/TextJava/congno.txt");
+        dsSinhViens = con.docFile("src/TextJava/sinhvien.txt");
+        giaoDichs = con.docFile("src/TextJava/giaodich.txt");
         initComponents();
         loadTable();
         this.setLocationRelativeTo(null);
@@ -174,11 +176,15 @@ public class NopHocPhi extends java.awt.Dialog {
                     }
                     loadTable();
                     con.ghiFile(congNos, "src/TextJava/congno.txt");
+                    GiaoDich giaoDich = new GiaoDich(sinhVien, "Nộp học phí", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(gia));
+                    giaoDichs.add(giaoDich);
+                    con.ghiFile(giaoDichs, "src/TextJava/giaodich.txt");
+                    dsSinhViens.set(dsSinhViens.indexOf(sinhVien), sinhVien);
+                    con.ghiFile(dsSinhViens, "src/TextJava/sinhvien.txt");
                     sinhVienMain.loadData();
                     JOptionPane.showMessageDialog(this, "Thanh toán thành công");
                 }
             }
-
         } catch (Exception e) {
             Frame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -221,6 +227,11 @@ public class NopHocPhi extends java.awt.Dialog {
                 lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
                 loadTable();
                 con.ghiFile(congNos, "src/TextJava/congno.txt");
+                GiaoDich giaoDich = new GiaoDich(sinhVien, "Nộp học phí", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(tong));
+                giaoDichs.add(giaoDich);
+                con.ghiFile(giaoDichs, "src/TextJava/giaodich.txt");
+                dsSinhViens.set(dsSinhViens.indexOf(sinhVien), sinhVien);
+                con.ghiFile(dsSinhViens, "src/TextJava/sinhvien.txt");
                 sinhVienMain.loadData();
                 JOptionPane.showMessageDialog(this, "Thanh toán thành công");
             }
@@ -229,23 +240,6 @@ public class NopHocPhi extends java.awt.Dialog {
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnNopTatCa1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    //    public static void main(String args[]) {
-    //        java.awt.EventQueue.invokeLater(new Runnable() {
-    //            public void run() {
-    //                NopHocPhi dialog = new NopHocPhi(new java.awt.Frame(), true);
-    //                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-    //                    public void windowClosing(java.awt.event.WindowEvent e) {
-    //                        System.exit(0);
-    //                    }
-    //                });
-    //                dialog.setVisible(true);
-    //            }
-    //        });
-    //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNop;

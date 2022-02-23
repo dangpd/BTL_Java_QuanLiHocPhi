@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/AWTForms/Dialog.java to edit this template
- */
 package viewsv;
 
 import controller.Controller;
@@ -16,10 +12,6 @@ import model.TaiKhoan;
 import model.Thu;
 import model.ThuTheoDangKy;
 
-/**
- *
- * @author Chien
- */
 public class RutTien extends java.awt.Dialog {
 
     private SinhVien sinhVien;
@@ -28,9 +20,6 @@ public class RutTien extends java.awt.Dialog {
     private ArrayList<GiaoDich> dsGiaoDich;
     private Controller con;
 
-    /**
-     * Creates new form RutTien
-     */
     private SinhVienMain sinhVienMain;
 
     public RutTien(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
@@ -73,7 +62,7 @@ public class RutTien extends java.awt.Dialog {
         jLabel1.setText("Mật khẩu");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
 
-        jLabel2.setText("Số tiền cần rút");
+        jLabel2.setText("Số tiền muốn rút");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 20));
         add(txtSoTienCanRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 140, -1));
 
@@ -125,41 +114,26 @@ public class RutTien extends java.awt.Dialog {
                 throw new Exception("Số tiền cần rút không được vượt quá số dư của tài khoản");
             }
             TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(new TaiKhoan(sinhVien.getMaSinhVien(), "", "")));
-            if(!tk.getMatKhau().equals(txtMatKhau.getText()))
+            if (!tk.getMatKhau().equals(txtMatKhau.getText())) {
                 throw new Exception("Mật khẩu không chính xác");
-
+            }
             int output = JOptionPane.showConfirmDialog(frame,
                     "Xác nhận rút tiền", "Lựa chọn", JOptionPane.YES_NO_OPTION);
             if (output == JOptionPane.YES_OPTION) {
                 sinhVien.getTaiKhoanTien().setSoDu(sinhVien.getTaiKhoanTien().getSoDu() + soTienRut);
                 sinhVien.setSoTienTK(soDu - soTienRut);
                 dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
-                GiaoDich giaoDich = new GiaoDich(sinhVien, null, sinhVien.getTaiKhoanTien(), new Date(), "-"+String.valueOf(soTienRut));
+                GiaoDich giaoDich = new GiaoDich(sinhVien, "Rút tiền", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(soTienRut));
+                dsGiaoDich.add(giaoDich);
+                con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
                 con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                 sinhVienMain.loadData();
-                throw new Exception("Rút thành công");                
+                throw new Exception("Rút thành công");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnNapTienActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                RutTien dialog = new RutTien(new java.awt.Frame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;

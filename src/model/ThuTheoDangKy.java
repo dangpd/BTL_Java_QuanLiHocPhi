@@ -9,7 +9,7 @@ public class ThuTheoDangKy extends Thu implements Serializable {
     private int soDanhMaTuDong;
 
     public ThuTheoDangKy(int soDanhMaTuDong, LopHocPhan lopHocPhan, String maSv) {
-        super(String.valueOf(soDanhMaTuDong), "Thu theo đăng kí : "+ lopHocPhan.getHocPhan().getTenHocPhan(), lopHocPhan.getHocPhan().getGia());
+        super(String.valueOf(soDanhMaTuDong), "Thu theo đăng kí : " + lopHocPhan.getHocPhan().getTenHocPhan(), lopHocPhan.getHocPhan().getGia());
         this.maSV = maSv;
         this.lopHocPhan = lopHocPhan;
         this.soDanhMaTuDong = soDanhMaTuDong;
@@ -19,7 +19,6 @@ public class ThuTheoDangKy extends Thu implements Serializable {
         System.out.println(this.maKhoanThu);
         System.out.println(this.tenKhoanThu);
         System.out.println();
-//        super("TTDk" + String.valueOf(soDanhMaTuDong),"Thu đăng ký học phần " + lopHocPhan.getHocPhan().getTenHocPhan(),lopHocPhan.getHocPhan().getGia());
     }
 
     public ThuTheoDangKy() {

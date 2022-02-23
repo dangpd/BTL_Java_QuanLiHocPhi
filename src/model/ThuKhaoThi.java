@@ -3,11 +3,12 @@ package model;
 import java.io.Serializable;
 
 public class ThuKhaoThi extends Thu implements Serializable {
+
     private Khoa khoa;
     private int soDanhMaTuDong;
 
     public ThuKhaoThi(Khoa khoa, int soDanhMaTuDong, String tenKhoanThu, double gia) {
-        super("TCDN"+String.valueOf(soDanhMaTuDong), tenKhoanThu, gia);
+        super("TCDN" + String.valueOf(soDanhMaTuDong), tenKhoanThu, gia);
         this.khoa = khoa;
         this.soDanhMaTuDong = soDanhMaTuDong;
     }
@@ -15,7 +16,7 @@ public class ThuKhaoThi extends Thu implements Serializable {
     public ThuKhaoThi(String maKhoanThu, String tenKhoanThu, double gia) {
         super(maKhoanThu, tenKhoanThu, gia);
     }
-    
+
     public ThuKhaoThi(Khoa khoa, int soDanhMaTuDong) {
         this.khoa = khoa;
         this.soDanhMaTuDong = soDanhMaTuDong;

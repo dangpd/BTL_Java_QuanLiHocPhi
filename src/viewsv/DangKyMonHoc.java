@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/AWTForms/Dialog.java to edit this template
- */
 package viewsv;
 
 import controller.Controller;
@@ -18,10 +14,6 @@ import model.SinhVien;
 import model.TableModel;
 import model.ThuTheoDangKy;
 
-/**
- *
- * @author Chien
- */
 public class DangKyMonHoc extends java.awt.Dialog {
 
     private SinhVienMain sinhVienMain;
@@ -37,9 +29,6 @@ public class DangKyMonHoc extends java.awt.Dialog {
     private int tinChi;
     private double gia;
 
-    /**
-     * Creates new form DangKyMonHoc
-     */
     public DangKyMonHoc(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
         super(parent, modal);
         this.sinhVienMain = (SinhVienMain) parent;
@@ -68,11 +57,9 @@ public class DangKyMonHoc extends java.awt.Dialog {
                         return null;
                 }
             }
-
         };
         tableDangKyHocPhan.setModel(this.tableMonHoc);
         this.setLocationRelativeTo(null);
-
     }
 
     /**
@@ -154,7 +141,6 @@ public class DangKyMonHoc extends java.awt.Dialog {
             if (lopHocPhans.contains(lhp)) {
                 throw new Exception("Môn học này đã được bạn đăng ký");
             }
-
             hp = hocPhans.get(hocPhans.indexOf(hp));
             lhp = new LopHocPhan(sinhVien, hp);
 
@@ -168,7 +154,6 @@ public class DangKyMonHoc extends java.awt.Dialog {
                     }
                     return -1;
                 }
-
             });
             ThuTheoDangKy thuTheoDK = new ThuTheoDangKy(maDangKyHocPhanMax.getSoDanhMaTuDong() + 1, lhp, sinhVien.getMaSinhVien());
             CongNo congNo = new CongNo(sinhVien, thuTheoDK, false);
@@ -180,7 +165,6 @@ public class DangKyMonHoc extends java.awt.Dialog {
             con.ghiFile(congNos, "src/TextJava/congno.txt");
             sinhVienMain.loadData();
             throw new Exception("Đăng ký thành công môn học " + hp.getTenHocPhan());
-
         } catch (Exception e) {
             Frame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -191,23 +175,6 @@ public class DangKyMonHoc extends java.awt.Dialog {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_btnThoatActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                DangKyMonHoc dialog = new DangKyMonHoc(new java.awt.Frame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangKy;

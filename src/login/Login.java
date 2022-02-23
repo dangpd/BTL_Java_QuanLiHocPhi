@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package login;
 
 import controller.Controller;
@@ -15,10 +11,6 @@ import model.TaiKhoan;
 import viewqt.QuanTriView;
 import viewsv.SinhVienMain;
 
-/**
- *
- * @author DucDang
- */
 public class Login extends javax.swing.JFrame {
 
     public ArrayList<TaiKhoan> dsTaiKhoan = new ArrayList<>();
@@ -26,9 +18,6 @@ public class Login extends javax.swing.JFrame {
     public ArrayList<QuanTri> dsQT = new ArrayList<>();
     private Controller con;
 
-    /**
-     * Creates new form Login
-     */
     public Login() {
         con = new Controller();
         dsTaiKhoan = con.docFile("src/TextJava/taikhoan.txt");
@@ -153,7 +142,7 @@ public class Login extends javax.swing.JFrame {
                 String pass = txtMatKhau.getText();
                 TaiKhoan temp = new TaiKhoan(user, pass);
                 int index = dsTaiKhoan.indexOf(temp);
-                if (index > 0) {
+                if (index >= 0) {
                     TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(temp));
                     if (!tk.getMaTaiKhoan().equals(user) || !tk.getMatKhau().equals(pass)) {
                         JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
@@ -167,8 +156,8 @@ public class Login extends javax.swing.JFrame {
                                 .filter(s -> s.getMaQuanTri().equals(user))
                                 .findFirst()
                                 .get();
-                        QuanTriView svMain = new QuanTriView(qt);
-                        svMain.setVisible(true);
+                        QuanTriView qtMain = new QuanTriView(qt);
+                        qtMain.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò sinh viên!");
                         SinhVien sv = dsSV

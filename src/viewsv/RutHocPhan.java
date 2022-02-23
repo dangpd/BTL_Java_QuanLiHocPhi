@@ -1,15 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/AWTForms/Dialog.java to edit this template
- */
 package viewsv;
 
 import controller.Controller;
 import java.awt.Frame;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.CongNo;
+import model.GiaoDich;
 import model.HocPhan;
 import model.LopHocPhan;
 import model.SinhVien;
@@ -17,16 +15,13 @@ import model.TableModel;
 import model.Thu;
 import model.ThuTheoDangKy;
 
-/**
- *
- * @author Chien
- */
 public class RutHocPhan extends java.awt.Dialog {
 
     private SinhVienMain sinhVienMain;
     private SinhVien sinhVien;
     private TableModel<HocPhan> tableModelRutHocPhan;
     private ArrayList<HocPhan> dsHocPhan;
+    private ArrayList<GiaoDich> dsGiaoDich;
     private ArrayList<HocPhan> dsHocPhanDaDangKy;
     private ArrayList<LopHocPhan> dsLopHocPhan;
     private ArrayList<LopHocPhan> dsLopHocPhanDaDangKy;
@@ -36,13 +31,11 @@ public class RutHocPhan extends java.awt.Dialog {
     private Controller con;
     private String maHocPhanHuy = "";
 
-    /**
-     * Creates new form RutHocPhan
-     */
     public RutHocPhan(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
         super(parent, modal);
         this.sinhVien = sinhVien;
         con = new Controller();
+        dsGiaoDich = con.docFile("src/TextJava/giaodich.txt");
         dsHocPhan = con.docFile("src/TextJava/hocphan.txt");
         dsLopHocPhan = con.docFile("src/TextJava/lophocphan.txt");
         dsThuTheoDangKy = con.docFile("src/TextJava/thutheodangky.txt");
@@ -57,9 +50,7 @@ public class RutHocPhan extends java.awt.Dialog {
                 dsHocPhanDaDangKy.add(get.getHocPhan());
             }
         }
-
         initComponents();
-
         loadDataTable();
         this.setLocationRelativeTo(null);
         sinhVienMain = (SinhVienMain) parent;
@@ -83,7 +74,6 @@ public class RutHocPhan extends java.awt.Dialog {
                         return null;
                 }
             }
-
         };
         tableRutHocPhan.setModel(tableModelRutHocPhan);
     }
@@ -167,7 +157,7 @@ public class RutHocPhan extends java.awt.Dialog {
                 Thu thu = new ThuTheoDangKy();
                 thu = dsThuTheoDangKy.get(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
                 CongNo check = dsCongNo.get(dsCongNo.indexOf(new CongNo(sinhVien, thu, false)));
-                if(check.isKiemTraThu()){
+                if (check.isKiemTraThu()) {
                     sinhVien.setSoTienTK(sinhVien.getSoTienTK() + check.getKhoanThu().getGia());
                     dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
                     con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
@@ -176,7 +166,10 @@ public class RutHocPhan extends java.awt.Dialog {
                 dsCongNo.remove(dsCongNo.indexOf(new CongNo(sinhVien, thu, false)));
                 dsThuTheoDangKy.remove(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
                 dsHocPhanDaDangKy.remove(dsHocPhanDaDangKy.indexOf(hp));
-                
+                GiaoDich giaoDich = new GiaoDich(sinhVien, "Rút học phần", sinhVien.getTaiKhoanTien(), new Date(), "+ " + String.valueOf(check.getKhoanThu().getGia()));
+                dsGiaoDich.add(giaoDich);
+                con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
+                con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                 con.ghiFile(dsLopHocPhan, "src/TextJava/lophocphan.txt");
                 con.ghiFile(dsThuTheoDangKy, "src/TextJava/thutheodangky.txt");
                 con.ghiFile(dsCongNo, "src/TextJava/congno.txt");
@@ -184,10 +177,6 @@ public class RutHocPhan extends java.awt.Dialog {
                 loadDataTable();
                 throw new Exception("Thành công");
             }
-//            else if (output == JOptionPane.NO_OPTION) {
-//                statusLabel.setText("No selected.");
-//            }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -206,22 +195,6 @@ public class RutHocPhan extends java.awt.Dialog {
         System.out.println(maHocPhanHuy);
     }//GEN-LAST:event_tableRutHocPhanMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                RutHocPhan dialog = new RutHocPhan(new java.awt.Frame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRutPhan;

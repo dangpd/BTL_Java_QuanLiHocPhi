@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/AWTForms/Dialog.java to edit this template
- */
 package viewsv;
 
 import controller.Controller;
@@ -19,12 +15,9 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
     private SinhVien sinhVien;
     private ArrayList<SinhVien> dsSinhVien;
     private ArrayList<TaiKhoan> dsTaiKhoan;
-     private ArrayList<GiaoDich> dsGiaoDich;
+    private ArrayList<GiaoDich> dsGiaoDich;
     private Controller con;
 
-    /**
-     * Creates new form NapTienVaoTaiKhoan
-     */
     private SinhVienMain sinhVienMain;
 
     public NapTienVaoTaiKhoan(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
@@ -123,7 +116,9 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
                 sinhVien.getTaiKhoanTien().setSoDu(sinhVien.getTaiKhoanTien().getSoDu() - soTienNap);
                 sinhVien.setSoTienTK(soDu + soTienNap);
                 dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
-                GiaoDich giaoDich = new GiaoDich(sinhVien, null, sinhVien.getTaiKhoanTien(), new Date(), "+"+String.valueOf(soTienNap));
+                GiaoDich giaoDich = new GiaoDich(sinhVien, "Nạp tiền vào tài khoản", sinhVien.getTaiKhoanTien(), new Date(), "+ " + String.valueOf(soTienNap));
+                dsGiaoDich.add(giaoDich);
+                con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
                 con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                 sinhVienMain.loadData();
                 throw new Exception("Nạp thành công");
@@ -138,23 +133,6 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_btnHuyActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                NapTienVaoTaiKhoan dialog = new NapTienVaoTaiKhoan(new java.awt.Frame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;

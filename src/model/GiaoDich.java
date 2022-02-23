@@ -6,14 +6,14 @@ import java.util.Date;
 public class GiaoDich implements Serializable {
 
     private SinhVien sinhVien;
-    private Thu thuTien;
+    private String tenKhoanThu;
     private TaiKhoanTien napRutTien;
     private Date ngayNop;
     private String soTien;
 
-    public GiaoDich(SinhVien sinhVien, Thu thuTien, TaiKhoanTien napTien, Date ngayNop, String soTien) {
+    public GiaoDich(SinhVien sinhVien, String tenKhoanThu, TaiKhoanTien napTien, Date ngayNop, String soTien) {
         this.sinhVien = sinhVien;
-        this.thuTien = thuTien;
+        this.tenKhoanThu = tenKhoanThu;
         this.napRutTien = napTien;
         this.ngayNop = ngayNop;
         this.soTien = soTien;
@@ -30,12 +30,12 @@ public class GiaoDich implements Serializable {
         this.sinhVien = sinhVien;
     }
 
-    public Thu getThuTien() {
-        return thuTien;
+    public String getTenKhoanThu() {
+        return tenKhoanThu;
     }
 
-    public void setThuTien(Thu thuTien) {
-        this.thuTien = thuTien;
+    public void setTenKhoanThu(String tenKhoanThu) {
+        this.tenKhoanThu = tenKhoanThu;
     }
 
     public TaiKhoanTien getNapTien() {

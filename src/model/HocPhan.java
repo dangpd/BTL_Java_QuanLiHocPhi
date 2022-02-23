@@ -11,7 +11,6 @@ public class HocPhan implements Serializable {
     private double gia;
     private final double giaGoc = 350000;
 
-
     public HocPhan(String maHocPhan, String tenHocPhan, int tinChi, String loai) {
         this.maHocPhan = maHocPhan;
         this.tenHocPhan = tenHocPhan;

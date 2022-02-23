@@ -29,7 +29,6 @@ public class Controller {
     public <T> ArrayList<T> docFile(String fileName) {
         ArrayList<T> list = new ArrayList<>();
         File file = new File(fileName);
-
         try {
             file.createNewFile();
             FileInputStream fos = new FileInputStream(file);
