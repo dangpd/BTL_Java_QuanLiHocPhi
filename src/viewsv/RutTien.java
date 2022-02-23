@@ -50,7 +50,6 @@ public class RutTien extends java.awt.Dialog {
         txtMatKhau = new javax.swing.JPasswordField();
 
         setMinimumSize(new java.awt.Dimension(290, 150));
-        setPreferredSize(new java.awt.Dimension(320, 133));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -64,7 +63,7 @@ public class RutTien extends java.awt.Dialog {
 
         jLabel2.setText("Số tiền muốn rút");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 20));
-        add(txtSoTienCanRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 140, -1));
+        add(txtSoTienCanRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 120, -1));
 
         btnHuy.setBackground(new java.awt.Color(255, 255, 255));
         btnHuy.setText("Hủy");
@@ -83,7 +82,7 @@ public class RutTien extends java.awt.Dialog {
             }
         });
         add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
-        add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 140, -1));
+        add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

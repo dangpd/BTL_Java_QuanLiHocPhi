@@ -39,8 +39,11 @@ public class LichSuGiaoDich extends javax.swing.JFrame {
 
     public void loadGiaoDich() {
         String[] tenCot = {"Tên khoản thu", "Ngày", "Số tiền"};
+        List<GiaoDich> temp = giaoDichs.stream().filter(cn -> cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())).toList();
+        ArrayList<GiaoDich> giaoDichs = new ArrayList<>();
+        giaoDichs.addAll(temp);
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        this.tableGiaoDicModel = new TableModel<GiaoDich>(this.giaoDichs, tenCot) {
+        this.tableGiaoDicModel = new TableModel<GiaoDich>(giaoDichs, tenCot) {
             @Override
             public Object getValueAt(int rowIndex, int columnIndex) {
                 switch (columnIndex) {
