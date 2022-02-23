@@ -5,7 +5,9 @@
 package viewqt;
 
 import controller.Controller;
+import java.awt.Frame;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.CongNo;
 import model.Khoa;
 import model.SinhVien;
@@ -121,7 +123,7 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
         for (int i = 0; i < dsKhoa.size(); i++) {
             Khoa get = dsKhoa.get(i);
             if (get.getTenKhoa().equals(tenKhoa)) {
-                khoaDuocChon = get;
+//                khoaDuocChon = get;
                 break;
             }
         }
@@ -138,40 +140,40 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
         Frame frame = new Frame();
 
         try {
-            if (txtTenKhoanThu.getText().equals("") || txtGia.getText().equals("") || khoaDuocChon == null) {
-                throw new Exception("Vui lòng nhập đầy đủ thông tin");
-            }
-
-            int soMax;
-            if (dsThuChiDauNam.size() != 0) {
-                ThuChiDauNam maThuChiDauNamMax = Collections.max(dsThuChiDauNam, new Comparator<ThuChiDauNam>() {
-                    @Override
-                    public int compare(ThuChiDauNam o1, ThuChiDauNam o2) {
-                        if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong()) {
-                            return 1;
-                        } else if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong()) {
-                            return 0;
-                        }
-                        return -1;
-                    }
-
-                });
-                soMax = maThuChiDauNamMax.getSoDanhMaTuDong();
-            }
-            else
-            soMax = 0;
-            ThuChiDauNam thuChiDauNam = new ThuChiDauNam(khoaDuocChon, soMax + 1, txtTenKhoanThu.getText(), Double.parseDouble(txtGia.getText()));
-            dsThuChiDauNam.add(thuChiDauNam);
-            for (int i = 0; i < dsSinhVien.size(); i++) {
-                SinhVien get = dsSinhVien.get(i);
-                if (get.getLop().getKhoa().getMaKhoa().equals(khoaDuocChon.getMaKhoa())) {
-                    CongNo congNo = new CongNo(get, thuChiDauNam, false);
-                    dsCongNo.add(congNo);
-                }
-            }
-            con.ghiFile(dsThuChiDauNam, "src/TextJava/thuchidaunam.txt");
-            con.ghiFile(dsCongNo, "src/TextJava/congno.txt");
-            quanLyThuChiDauNam.loadDataTable();
+//            if (txtTenKhoanThu.getText().equals("") || txtGia.getText().equals("") || khoaDuocChon == null) {
+//                throw new Exception("Vui lòng nhập đầy đủ thông tin");
+//            }
+//
+//            int soMax;
+//            if (dsThuChiDauNam.size() != 0) {
+//                ThuChiDauNam maThuChiDauNamMax = Collections.max(dsThuChiDauNam, new Comparator<ThuChiDauNam>() {
+//                    @Override
+//                    public int compare(ThuChiDauNam o1, ThuChiDauNam o2) {
+//                        if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong()) {
+//                            return 1;
+//                        } else if (o1.getSoDanhMaTuDong() > o2.getSoDanhMaTuDong()) {
+//                            return 0;
+//                        }
+//                        return -1;
+//                    }
+//
+//                });
+//                soMax = maThuChiDauNamMax.getSoDanhMaTuDong();
+//            }
+//            else
+//            soMax = 0;
+//            ThuChiDauNam thuChiDauNam = new ThuChiDauNam(khoaDuocChon, soMax + 1, txtTenKhoanThu.getText(), Double.parseDouble(txtGia.getText()));
+//            dsThuChiDauNam.add(thuChiDauNam);
+//            for (int i = 0; i < dsSinhVien.size(); i++) {
+//                SinhVien get = dsSinhVien.get(i);
+//                if (get.getLop().getKhoa().getMaKhoa().equals(khoaDuocChon.getMaKhoa())) {
+//                    CongNo congNo = new CongNo(get, thuChiDauNam, false);
+//                    dsCongNo.add(congNo);
+//                }
+//            }
+//            con.ghiFile(dsThuChiDauNam, "src/TextJava/thuchidaunam.txt");
+//            con.ghiFile(dsCongNo, "src/TextJava/congno.txt");
+//            quanLyThuChiDauNam.loadDataTable();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);

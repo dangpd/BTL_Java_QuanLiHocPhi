@@ -32,6 +32,7 @@ public class RutHocPhan extends java.awt.Dialog {
     private ArrayList<LopHocPhan> dsLopHocPhanDaDangKy;
     private ArrayList<ThuTheoDangKy> dsThuTheoDangKy;
     private ArrayList<CongNo> dsCongNo;
+    private ArrayList<SinhVien> dsSinhVien;
     private Controller con;
     private String maHocPhanHuy = "";
 
@@ -46,6 +47,7 @@ public class RutHocPhan extends java.awt.Dialog {
         dsLopHocPhan = con.docFile("src/TextJava/lophocphan.txt");
         dsThuTheoDangKy = con.docFile("src/TextJava/thutheodangky.txt");
         dsCongNo = con.docFile("src/TextJava/congno.txt");
+        dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
         dsLopHocPhanDaDangKy = new ArrayList<>();
         dsHocPhanDaDangKy = new ArrayList<>();
         for (int i = 0; i < dsLopHocPhan.size(); i++) {
@@ -164,9 +166,17 @@ public class RutHocPhan extends java.awt.Dialog {
                 dsLopHocPhan.remove(dsLopHocPhan.indexOf(lhp));
                 Thu thu = new ThuTheoDangKy();
                 thu = dsThuTheoDangKy.get(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
+                CongNo check = dsCongNo.get(dsCongNo.indexOf(new CongNo(sinhVien, thu, false)));
+                if(check.isKiemTraThu()){
+                    sinhVien.setSoTienTK(sinhVien.getSoTienTK() + check.getKhoanThu().getGia());
+                    dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
+                    con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
+                    sinhVienMain.loadData();
+                }
                 dsCongNo.remove(dsCongNo.indexOf(new CongNo(sinhVien, thu, false)));
                 dsThuTheoDangKy.remove(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
                 dsHocPhanDaDangKy.remove(dsHocPhanDaDangKy.indexOf(hp));
+                
                 con.ghiFile(dsLopHocPhan, "src/TextJava/lophocphan.txt");
                 con.ghiFile(dsThuTheoDangKy, "src/TextJava/thutheodangky.txt");
                 con.ghiFile(dsCongNo, "src/TextJava/congno.txt");
