@@ -15,14 +15,14 @@ import model.SinhVien;
 import model.TableModel;
 
 public class NopHocPhi extends java.awt.Dialog {
-    
+
     private SinhVienMain sinhVienMain;
     private SinhVien sinhVien;
     private TableModel<CongNo> congNoThuModel;
     private ArrayList<CongNo> congNos = new ArrayList<>();
     private Controller con;
-    private String maKhoanThu;
-    
+    private String maKhoanThu = "";
+
     public NopHocPhi(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
         super(parent, modal);
         this.sinhVienMain = (SinhVienMain) parent;
@@ -33,7 +33,7 @@ public class NopHocPhi extends java.awt.Dialog {
         loadTable();
         this.setLocationRelativeTo(null);
     }
-    
+
     public void loadTable() {
         String[] tenCot = {"Mã khoản thu", "Tên khoản thu", "Giá"};
         List<CongNo> temp = congNos.stream().filter(cn -> cn.isKiemTraThu() == false && cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())).toList();
@@ -154,7 +154,7 @@ public class NopHocPhi extends java.awt.Dialog {
         // TODO add your handling code here: 
         try {
             if (maKhoanThu.equals("")) {
-                throw new Exception("Bạn chưa chọn môn để nộp");
+                JOptionPane.showMessageDialog(this, "Bạn chưa chọn môn để nộp");
             } else {
                 int row = tableCongNoThu.getSelectedRow();
                 double gia = (double) tableCongNoThu.getValueAt(row, 2);
@@ -178,7 +178,7 @@ public class NopHocPhi extends java.awt.Dialog {
                     JOptionPane.showMessageDialog(this, "Thanh toán thành công");
                 }
             }
-            
+
         } catch (Exception e) {
             Frame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -220,6 +220,8 @@ public class NopHocPhi extends java.awt.Dialog {
                 sinhVien.setSoTienTK(tien - tong);
                 lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
                 loadTable();
+                con.ghiFile(congNos, "src/TextJava/congno.txt");
+                sinhVienMain.loadData();
                 JOptionPane.showMessageDialog(this, "Thanh toán thành công");
             }
         } catch (Exception e) {
