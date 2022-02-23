@@ -110,6 +110,14 @@ public class NopHocPhi extends java.awt.Dialog {
         });
         add(btnNop, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 130, -1));
 
+        tableCongNoThu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         tableCongNoThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableCongNoThuMouseClicked(evt);

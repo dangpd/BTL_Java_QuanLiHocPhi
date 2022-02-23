@@ -250,7 +250,7 @@ public class SinhVienMain extends javax.swing.JFrame {
 
     private void btnLichSuGiaoDichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichSuGiaoDichActionPerformed
         // TODO add your handling code here:
-        LichSuGiaoDich lichSuGiaoDich = new LichSuGiaoDich(this, rootPaneCheckingEnabled);
+        LichSuGiaoDich lichSuGiaoDich = new LichSuGiaoDich(this, rootPaneCheckingEnabled,sinhVien);
         lichSuGiaoDich.setVisible(true);
     }//GEN-LAST:event_btnLichSuGiaoDichActionPerformed
 
