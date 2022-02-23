@@ -162,6 +162,7 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
                 thuChiDauNam = dsThuChiDauNam.get(dsThuChiDauNam.indexOf(thuChiDauNam));
                 double giaSua = Double.parseDouble(txtGia.getText());
                 String tenKhoanThuSua = txtTenKhoanThu.getText();
+                double giaCu = thuChiDauNam.getGia();
                 thuChiDauNam.setGia(giaSua);
                 thuChiDauNam.setTenKhoanThu(tenKhoanThuSua);
                 thuChiDauNam.setKhoa(khoaDuocChon);
@@ -171,9 +172,15 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
                     SinhVien get = dsSinhVien.get(i);
                     if (get.getLop().getKhoa().getMaKhoa().equals(khoaDuocChon.getMaKhoa())) {
                         CongNo congNo = new CongNo(get, thuChiDauNam, false);
+                        CongNo checkNopTien = dsCongNo.get(dsCongNo.indexOf(congNo));
+                        if(checkNopTien.isKiemTraThu()){
+                            get = new SinhVien(get.getMaSinhVien(), get.getHoTen(), get.getLop(), get.getSoTienTK() + giaCu, get.getDiaChi(), get.getTaiKhoanTien());
+                            dsSinhVien.set(dsSinhVien.indexOf(get), get);
+                        }
                         dsCongNo.set(dsCongNo.indexOf(congNo), congNo);
                     }
                 }
+                con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                 con.ghiFile(dsThuChiDauNam, "src/TextJava/thuchidaunam.txt");
                 con.ghiFile(dsCongNo, "src/TextJava/congno.txt");
                 quanLyThuChiDauNam.loadDataTable();
