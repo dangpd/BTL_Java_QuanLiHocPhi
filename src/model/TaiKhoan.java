@@ -48,12 +48,11 @@ public class TaiKhoan implements Serializable {
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.maTaiKhoan);
-        hash = 67 * hash + Objects.hashCode(this.matKhau);
+        hash = 97 * hash + Objects.hashCode(this.maTaiKhoan);
         return hash;
     }
 
@@ -69,10 +68,7 @@ public class TaiKhoan implements Serializable {
             return false;
         }
         final TaiKhoan other = (TaiKhoan) obj;
-        if (!Objects.equals(this.maTaiKhoan, other.maTaiKhoan)) {
-            return false;
-        }
-        return Objects.equals(this.matKhau, other.matKhau);
+        return Objects.equals(this.maTaiKhoan, other.maTaiKhoan);
     }
 
 

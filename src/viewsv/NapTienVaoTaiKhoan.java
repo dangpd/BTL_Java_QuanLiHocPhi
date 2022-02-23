@@ -13,17 +13,18 @@ import model.TaiKhoan;
 import model.TaiKhoanTien;
 
 public class NapTienVaoTaiKhoan extends java.awt.Dialog {
+
     private SinhVien sinhVien;
     private ArrayList<SinhVien> dsSinhVien;
     private ArrayList<TaiKhoan> dsTaiKhoan;
     private Controller con;
 
-
     /**
      * Creates new form NapTienVaoTaiKhoan
      */
     private SinhVienMain sinhVienMain;
-    public NapTienVaoTaiKhoan(java.awt.Frame parent, boolean modal,SinhVien sinhVien) {
+
+    public NapTienVaoTaiKhoan(java.awt.Frame parent, boolean modal, SinhVien sinhVien) {
         super(parent, modal);
         this.sinhVien = sinhVien;
         this.con = new Controller();
@@ -104,23 +105,28 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
             }
             double soDu = sinhVien.getSoTienTK();
             double soTienNap = Double.parseDouble(txtSoTienCanNap.getText());
+            double soTienTk = sinhVien.getTaiKhoanTien().getSoDu();
+            if (soTienNap > soTienTk) {
+                throw new Exception("Số dư tài khoản không đủ !");
+            }
             TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(new TaiKhoan(sinhVien.getMaSinhVien(), "", "")));
-            if(!tk.getMatKhau().equals(txtMatKhau.getText()))
+            if (!tk.getMatKhau().equals(txtMatKhau.getText())) {
                 throw new Exception("Mật khẩu không chính xác");
+            }
 
-            int output = JOptionPane.showConfirmDialog(frame,"Xác nhận nạp tiền", "Lựa chọn", JOptionPane.YES_NO_OPTION);
+            int output = JOptionPane.showConfirmDialog(frame, "Xác nhận nạp tiền", "Lựa chọn", JOptionPane.YES_NO_OPTION);
             if (output == JOptionPane.YES_OPTION) {
                 sinhVien.getTaiKhoanTien().setSoDu(sinhVien.getTaiKhoanTien().getSoDu() - soTienNap);
                 sinhVien.setSoTienTK(soDu + soTienNap);
                 dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
                 con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                 sinhVienMain.loadData();
-                throw new Exception("Nạp thành công");                
+                throw new Exception("Nạp thành công");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnNapTienActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -144,7 +150,6 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
 //            }
 //        });
 //    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;

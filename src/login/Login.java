@@ -61,11 +61,10 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Tài khoản : ");
 
-        jLabel3.setText("Mất khẩu :");
+        jLabel3.setText("Mật khẩu :");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Trường Đại Học Công Nghiệp Hà Nội");
-
 
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.setMaximumSize(new java.awt.Dimension(90, 25));
@@ -154,7 +153,13 @@ public class Login extends javax.swing.JFrame {
                 String pass = txtMatKhau.getText();
                 TaiKhoan temp = new TaiKhoan(user, pass);
                 int index = dsTaiKhoan.indexOf(temp);
-                if (index < 0) {
+                if(index == -1){
+                    JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
+                    return;
+                }
+                TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(temp));
+                
+                if (!tk.getMaTaiKhoan().equals(user) || !tk.getMatKhau().equals(pass)) {
                     JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
                     return;
                 } else {
