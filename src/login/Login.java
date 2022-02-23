@@ -153,16 +153,12 @@ public class Login extends javax.swing.JFrame {
                 String pass = txtMatKhau.getText();
                 TaiKhoan temp = new TaiKhoan(user, pass);
                 int index = dsTaiKhoan.indexOf(temp);
-                if(index == -1){
-                    JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
-                    return;
-                }
-                TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(temp));
-                
-                if (!tk.getMaTaiKhoan().equals(user) || !tk.getMatKhau().equals(pass)) {
-                    JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
-                    return;
-                } else {
+                if (index > 0) {
+                    TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(temp));
+                    if (!tk.getMaTaiKhoan().equals(user) || !tk.getMatKhau().equals(pass)) {
+                        JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
+                        return;
+                    }
                     temp = dsTaiKhoan.get(index);
                     if (temp.getQuyen().equals("QT")) {
                         JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò quản trị viên!");
@@ -183,6 +179,9 @@ public class Login extends javax.swing.JFrame {
                         SinhVienMain svMain = new SinhVienMain(sv);
                         svMain.setVisible(true);
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
+                    return;
                 }
                 this.setVisible(false);
             }
