@@ -9,7 +9,7 @@ public class ThuTheoDangKy extends Thu implements Serializable {
     private int soDanhMaTuDong;
 
     public ThuTheoDangKy(int soDanhMaTuDong, LopHocPhan lopHocPhan, String maSv) {
-        super(String.valueOf(soDanhMaTuDong), "Thu theo đăng kí : " + lopHocPhan.getHocPhan().getTenHocPhan(), lopHocPhan.getHocPhan().getGia());
+        super("TTDK" + String.valueOf(soDanhMaTuDong), "Thu theo đăng kí : " + lopHocPhan.getHocPhan().getTenHocPhan(), lopHocPhan.getHocPhan().getGia());
         this.maSV = maSv;
         this.lopHocPhan = lopHocPhan;
         this.soDanhMaTuDong = soDanhMaTuDong;

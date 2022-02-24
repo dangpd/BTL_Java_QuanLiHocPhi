@@ -17,6 +17,7 @@ import model.TaiKhoanTien;
 import model.Thu;
 import model.ThuBoSung;
 import model.ThuChiDauNam;
+import model.ThuKhaoThi;
 import model.ThuTheoDangKy;
 
 
@@ -183,6 +184,10 @@ public class Data {
         //Thu bổ sung
         ArrayList<ThuBoSung> thuBoSungs = new ArrayList<>();
         con.ghiFile(thuBoSungs, "src/TextJava/thubosung.txt");
+        
+        //Thu khảo thí
+        ArrayList<ThuKhaoThi> thuKhaoThis = new ArrayList<>();
+        con.ghiFile(thuKhaoThis, "src/TextJava/thukhaothi.txt");
 
         ArrayList<CongNo> tks = con.docFile("src/TextJava/congno.txt");
         for (int i = 0; i < tks.size(); i++) {

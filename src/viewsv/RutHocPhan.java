@@ -153,16 +153,15 @@ public class RutHocPhan extends java.awt.Dialog {
                     dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
                     con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                     sinhVienMain.loadData();
+                    GiaoDich giaoDich = new GiaoDich(sinhVien, "Rút học phần", sinhVien.getTaiKhoanTien(), new Date(), "+ " + String.valueOf(check.getKhoanThu().getGia()));
+                    dsGiaoDich.add(giaoDich);
                 }
                 dsCongNo.remove(dsCongNo.indexOf(new CongNo(sinhVien, thu, false)));
                 dsThuTheoDangKy.remove(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
                 dsHocPhanDaDangKy.remove(dsHocPhanDaDangKy.indexOf(hp));
 
-                GiaoDich giaoDich = new GiaoDich(sinhVien, "Rút học phần", sinhVien.getTaiKhoanTien(), new Date(), "+ " + String.valueOf(check.getKhoanThu().getGia()));
-                dsGiaoDich.add(giaoDich);
                 con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
                 con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
-
                 con.ghiFile(dsLopHocPhan, "src/TextJava/lophocphan.txt");
                 con.ghiFile(dsThuTheoDangKy, "src/TextJava/thutheodangky.txt");
                 con.ghiFile(dsCongNo, "src/TextJava/congno.txt");

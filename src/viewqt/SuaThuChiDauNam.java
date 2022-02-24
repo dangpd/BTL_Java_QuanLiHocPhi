@@ -152,7 +152,7 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
                 String tenKhoanThuSua = txtTenKhoanThu.getText();
                 double giaCu = thuChiDauNam.getGia();
                 thuChiDauNam.setGia(giaSua);
-                thuChiDauNam.setTenKhoanThu(tenKhoanThuSua);
+                thuChiDauNam.setTenKhoanThu("Thu chi đầu năm : " + tenKhoanThuSua);
                 thuChiDauNam.setKhoa(khoaDuocChon);
 
                 if (khoaDuocChon.getTenKhoa().equals(tenKhoaBanDau)) {

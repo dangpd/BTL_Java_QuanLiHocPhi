@@ -170,7 +170,7 @@ public class SuaThuBoSung extends java.awt.Dialog {
                 String tenKhoanThuSua = txtTenKhoanThu.getText();
                 double giaCu = thuBoSung.getGia();
                 thuBoSung.setGia(giaSua);
-                thuBoSung.setTenKhoanThu(tenKhoanThuSua);
+                thuBoSung.setTenKhoanThu("Thu bổ sung : " + tenKhoanThuSua);
                 thuBoSung.setKhoa(khoaDuocChon);
 
                 if (khoaDuocChon.getTenKhoa().equals(tenKhoaBanDau)) {

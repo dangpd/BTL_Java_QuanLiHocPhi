@@ -62,6 +62,11 @@ public class QuanTriView extends javax.swing.JFrame {
 
         btnThuKhaoThi.setBackground(new java.awt.Color(255, 255, 255));
         btnThuKhaoThi.setText("Thu khảo thí");
+        btnThuKhaoThi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThuKhaoThiActionPerformed(evt);
+            }
+        });
 
         btnThuHocPhi.setBackground(new java.awt.Color(255, 255, 255));
         btnThuHocPhi.setText("Danh sách nộp học phí");
@@ -89,6 +94,11 @@ public class QuanTriView extends javax.swing.JFrame {
 
         btnThuTheoDangKi.setBackground(new java.awt.Color(255, 255, 255));
         btnThuTheoDangKi.setText("Thu theo đăng kí");
+        btnThuTheoDangKi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThuTheoDangKiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -214,6 +224,18 @@ public class QuanTriView extends javax.swing.JFrame {
         Login login = new Login();
         login.setVisible(true);
     }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    private void btnThuKhaoThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuKhaoThiActionPerformed
+        // TODO add your handling code here:
+        QuanLyThuKhaoThi qlThuKhaoThi = new QuanLyThuKhaoThi();
+        qlThuKhaoThi.setVisible(true);
+    }//GEN-LAST:event_btnThuKhaoThiActionPerformed
+
+    private void btnThuTheoDangKiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuTheoDangKiActionPerformed
+        // TODO add your handling code here:
+        QuanLyThuTheoDK quanLyThuTheoDK = new QuanLyThuTheoDK();
+        quanLyThuTheoDK.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_btnThuTheoDangKiActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
