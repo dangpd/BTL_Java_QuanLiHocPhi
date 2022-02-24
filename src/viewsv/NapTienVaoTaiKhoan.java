@@ -102,7 +102,6 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
             if (!tk.getMatKhau().equals(txtMatKhau.getText())) {
                 throw new Exception("Mật khẩu không chính xác");
             }
-
             int output = JOptionPane.showConfirmDialog(frame, "Xác nhận nạp tiền", "Lựa chọn", JOptionPane.YES_NO_OPTION);
             if (output == JOptionPane.YES_OPTION) {
                 sinhVien.getTaiKhoanTien().setSoDu(sinhVien.getTaiKhoanTien().getSoDu() - soTienNap);

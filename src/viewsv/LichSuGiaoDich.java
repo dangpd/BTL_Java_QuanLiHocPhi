@@ -2,6 +2,7 @@ package viewsv;
 
 import controller.Controller;
 import java.awt.Frame;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class LichSuGiaoDich extends javax.swing.JFrame {
         List<GiaoDich> temp = giaoDichs.stream().filter(cn -> cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())).toList();
         ArrayList<GiaoDich> giaoDichs = new ArrayList<>();
         giaoDichs.addAll(temp);
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         this.tableGiaoDicModel = new TableModel<GiaoDich>(giaoDichs, tenCot) {
             @Override
             public Object getValueAt(int rowIndex, int columnIndex) {
@@ -50,7 +51,7 @@ public class LichSuGiaoDich extends javax.swing.JFrame {
                     case 0:
                         return giaoDichs.get(rowIndex).getTenKhoanThu();
                     case 1:
-                        return df.format(giaoDichs.get(rowIndex).getNgayNop());
+                        return sdf.format(giaoDichs.get(rowIndex).getNgayNop());
                     case 2:
                         return giaoDichs.get(rowIndex).getSoTien();
                     default:

@@ -8,7 +8,7 @@ public class ThuBoSung extends Thu implements Serializable {
     private int soDanhMaTuDong;
 
     public ThuBoSung(Khoa khoa, int soDanhMaTuDong, String tenKhoanThu, double gia) {
-        super("TBS" + String.valueOf(soDanhMaTuDong),"Thu bổ sung " + tenKhoanThu, gia);
+        super("TBS" + String.valueOf(soDanhMaTuDong),"Thu bổ sung : " + tenKhoanThu, gia);
         this.khoa = khoa;
         this.soDanhMaTuDong = soDanhMaTuDong;
     }

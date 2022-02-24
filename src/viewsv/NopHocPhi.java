@@ -204,25 +204,27 @@ public class NopHocPhi extends java.awt.Dialog {
             for (int i = 0; i < tableCongNoThu.getRowCount(); i++) {
                 tong += (double) tableCongNoThu.getValueAt(i, 2);
             }
+            
+            
             double tien = sinhVien.getSoTienTK();
             if (tong > tien) {
                 JOptionPane.showMessageDialog(this, "Só tiền trong tài khoản không đủ, vui lòng nạp thêm tièn");
             } else {
+                sinhVien.setSoTienTK(tien - tong);
+                lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
                 for (int i = 0; i < tableCongNoThu.getRowCount(); i++) {
+                    double gia = (double) tableCongNoThu.getValueAt(i, 2);
                     String maKT = (String) tableCongNoThu.getValueAt(i, 0);
                     for (CongNo cn : congNos) {
-                        if (cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())
-                                && cn.getKhoanThu().getMaKhoanThu().equals(maKT)) {
+                        if (cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien()) && cn.getKhoanThu().getMaKhoanThu().equals(maKT)) {
                             cn.setKiemTraThu(true);
+                            GiaoDich giaoDich = new GiaoDich(sinhVien, cn.getKhoanThu().getTenKhoanThu(), sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(gia));
+                            giaoDichs.add(giaoDich);
                         }
                     }
                 }
-                sinhVien.setSoTienTK(tien - tong);
-                lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
                 loadTable();
                 con.ghiFile(congNos, "src/TextJava/congno.txt");
-                GiaoDich giaoDich = new GiaoDich(sinhVien, "Nộp học phí", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(tong));
-                giaoDichs.add(giaoDich);
                 con.ghiFile(giaoDichs, "src/TextJava/giaodich.txt");
                 dsSinhViens.set(dsSinhViens.indexOf(sinhVien), sinhVien);
                 con.ghiFile(dsSinhViens, "src/TextJava/sinhvien.txt");
