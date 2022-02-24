@@ -80,7 +80,7 @@ public class ThuKhaoThi extends Thu implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ThuChiDauNam other = (ThuChiDauNam) obj;
+        final ThuKhaoThi other = (ThuKhaoThi) obj;
         return this.maKhoanThu.equals(other.maKhoanThu);
     }
 }

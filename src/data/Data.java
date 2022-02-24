@@ -1,4 +1,6 @@
+
 package data;
+
 
 import java.util.ArrayList;
 import model.Khoa;
@@ -13,8 +15,10 @@ import model.QuanTri;
 import model.TaiKhoan;
 import model.TaiKhoanTien;
 import model.Thu;
+import model.ThuBoSung;
 import model.ThuChiDauNam;
 import model.ThuTheoDangKy;
+
 
 public class Data {
 
@@ -39,7 +43,7 @@ public class Data {
         //Khoa
         ArrayList<Khoa> khoas = new ArrayList<Khoa>();
         Khoa khoa = new Khoa("CNTT", "Công nghệ thông tin");
-        Khoa khoa1 = new Khoa("CK", "Cơ khí");
+        Khoa khoa1 = new Khoa("DT", "Điện tử");
         khoas.add(khoa);
         khoas.add(khoa1);
         con.ghiFile(khoas, "src/TextJava/khoa.txt");
@@ -48,8 +52,10 @@ public class Data {
         ArrayList<Lop> lops = new ArrayList<Lop>();
         Lop lop1 = new Lop("L01", "KTPM2", 20, khoa);
         Lop lop2 = new Lop("L02", "HTTT2", 20, khoa);
+        Lop lop3 = new Lop("L03", "DT1", 20, khoa1);
         lops.add(lop1);
         lops.add(lop2);
+        lops.add(lop3);
         con.ghiFile(lops, "src/TextJava/lop.txt");
 
         //TaiKhoanTien
@@ -59,11 +65,13 @@ public class Data {
         TaiKhoanTien tktien3 = new TaiKhoanTien("tktien3", 100000000);
         TaiKhoanTien tktien4 = new TaiKhoanTien("tktien4", 100000000);
         TaiKhoanTien tktien5 = new TaiKhoanTien("tktien6", 100000000);
+        TaiKhoanTien tktien6 = new TaiKhoanTien("tktien7", 100000000);
         taiKhoanTiens.add(tktien1);
         taiKhoanTiens.add(tktien2);
         taiKhoanTiens.add(tktien3);
         taiKhoanTiens.add(tktien4);
         taiKhoanTiens.add(tktien5);
+        taiKhoanTiens.add(tktien6);
         con.ghiFile(taiKhoanTiens, "src/TextJava/taikhoantien.txt");
 
         //SinhVien
@@ -73,11 +81,13 @@ public class Data {
         SinhVien sinhVien3 = new SinhVien("003", "Dang", lop1, 1000000, "ThaiBinh", tktien3);
         SinhVien sinhVien4 = new SinhVien("004", "Dai", lop2, 1000000, "ThaiBinh", tktien4);
         SinhVien sinhVien5 = new SinhVien("005", "Dung", lop1, 1000000, "ThaiBinh", tktien5);
+        SinhVien sinhVien6 = new SinhVien("006", "Chienn123", lop3, 1000000, "ThaiBinh", tktien6);
         sinhViens.add(sinhVien1);
         sinhViens.add(sinhVien2);
         sinhViens.add(sinhVien3);
         sinhViens.add(sinhVien4);
         sinhViens.add(sinhVien5);
+        sinhViens.add(sinhVien6);
         con.ghiFile(sinhViens, "src/TextJava/sinhvien.txt");
 
         //LopHocPhan(SinhVien sinhVien, HocPhan hocPhan)
@@ -86,10 +96,12 @@ public class Data {
         LopHocPhan lopHocPhan2 = new LopHocPhan(sinhVien2, hocPhan3);
         LopHocPhan lopHocPhan3 = new LopHocPhan(sinhVien1, hocPhan5);
         LopHocPhan lopHocPhan4 = new LopHocPhan(sinhVien3, hocPhan2);
+        LopHocPhan lopHocPhan5 = new LopHocPhan(sinhVien6, hocPhan1);
         lopHocPhans.add(lopHocPhan1);
         lopHocPhans.add(lopHocPhan2);
         lopHocPhans.add(lopHocPhan3);
         lopHocPhans.add(lopHocPhan4);
+        lopHocPhans.add(lopHocPhan5);
         con.ghiFile(lopHocPhans, "src/TextJava/lophocphan.txt");
 
         //QuanTri
@@ -118,6 +130,7 @@ public class Data {
         TaiKhoan tk8 = new TaiKhoan("003", "12345", "SV");
         TaiKhoan tk9 = new TaiKhoan("004", "12345", "SV");
         TaiKhoan tk10 = new TaiKhoan("005", "12345", "SV");
+        TaiKhoan tk11 = new TaiKhoan("006", "12345", "SV");
         taiKhoans.add(tk1);
         taiKhoans.add(tk2);
         taiKhoans.add(tk3);
@@ -128,6 +141,7 @@ public class Data {
         taiKhoans.add(tk8);
         taiKhoans.add(tk9);
         taiKhoans.add(tk10);
+        taiKhoans.add(tk11);
         con.ghiFile(taiKhoans, "src/TextJava/taikhoan.txt");
 
         //Thu theo đăn ký
@@ -136,10 +150,12 @@ public class Data {
         Thu thuTheoDangKy2 = new ThuTheoDangKy(2, lopHocPhan2, "002");
         Thu thuTheoDangKy3 = new ThuTheoDangKy(3, lopHocPhan3, "001");
         Thu thuTheoDangKy4 = new ThuTheoDangKy(4, lopHocPhan4, "002");
+        Thu thuTheoDangKy5 = new ThuTheoDangKy(5, lopHocPhan5, "006");
         thuTheoDangKy.add(thuTheoDangKy1);
         thuTheoDangKy.add(thuTheoDangKy2);
         thuTheoDangKy.add(thuTheoDangKy3);
         thuTheoDangKy.add(thuTheoDangKy4);
+        thuTheoDangKy.add(thuTheoDangKy5);
         con.ghiFile(thuTheoDangKy, "src/TextJava/thutheodangky.txt");
 
         //Công nợ
@@ -148,10 +164,12 @@ public class Data {
         CongNo congNo2 = new CongNo(sinhVien2, thuTheoDangKy2, false);
         CongNo congNo3 = new CongNo(sinhVien1, thuTheoDangKy3, false);
         CongNo congNo4 = new CongNo(sinhVien3, thuTheoDangKy4, false);
+        CongNo congNo5 = new CongNo(sinhVien6, thuTheoDangKy5, false);
         congNos.add(congNo1);
         congNos.add(congNo2);
         congNos.add(congNo3);
         congNos.add(congNo4);
+        congNos.add(congNo5);
         con.ghiFile(congNos, "src/TextJava/congno.txt");
 
         //GiaoDich
@@ -161,6 +179,10 @@ public class Data {
         //Thu chi đầu năm
         ArrayList<ThuChiDauNam> thuChiDauNams = new ArrayList<>();
         con.ghiFile(thuChiDauNams, "src/TextJava/thuchidaunam.txt");
+        
+        //Thu bổ sung
+        ArrayList<ThuBoSung> thuBoSungs = new ArrayList<>();
+        con.ghiFile(thuBoSungs, "src/TextJava/thubosung.txt");
 
         ArrayList<CongNo> tks = con.docFile("src/TextJava/congno.txt");
         for (int i = 0; i < tks.size(); i++) {

@@ -143,9 +143,6 @@ public class LichSuGiaoDich extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnThoatActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;

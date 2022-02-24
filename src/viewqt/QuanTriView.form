@@ -24,56 +24,44 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel2" min="-2" pref="77" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="77" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="lblMaQuanTri" min="-2" pref="166" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblTenQuanTri" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="77" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnThuKhaoThi" min="-2" pref="153" max="-2" attributes="0"/>
-                                  <Component id="btnThuTheoDangKi" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel2" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" pref="77" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                      <Component id="lblMaQuanTri" min="-2" pref="166" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblTenQuanTri" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" pref="77" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblChucVu" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="lblChucVu" max="32767" attributes="0"/>
+                          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnThuHocPhi" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnThuChiDauNam" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnThuBoSung" min="-2" pref="111" max="-2" attributes="0"/>
-                                  <Component id="btnThuHoHocPhi" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnDangXuat" min="-2" pref="106" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,20 +81,12 @@
                   <Component id="lblTenQuanTri" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnThuHocPhi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnThuKhaoThi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnThuHoHocPhi" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnThuBoSung" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnThuTheoDangKi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnThuChiDauNam" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="107" max="32767" attributes="0"/>
+              <Component id="jLabel4" min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnDangXuat" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,47 +112,131 @@
         <Property name="text" type="java.lang.String" value="Ch&#x1ee9;c n&#x103;ng"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnThuHocPhi">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch n&#x1ed9;p h&#x1ecd;c ph&#xed;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuHocPhiActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnThuHoHocPhi">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Thu h&#x1ed9; h&#x1ecd;c ph&#xed;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnThuChiDauNam">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xed; thu chi &#x111;&#x1ea7;u n&#x103;m"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuChiDauNamActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnThuBoSung">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Thu b&#x1ed5; sung"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnThuKhaoThi">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Thu kh&#x1ea3;o th&#xed;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnThuTheoDangKi">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Thu theo &#x111;&#x103;ng k&#xed;"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblMaQuanTri">
     </Component>
     <Component class="javax.swing.JLabel" name="lblTenQuanTri">
     </Component>
     <Component class="javax.swing.JLabel" name="lblChucVu">
+    </Component>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnThuHocPhi" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnThuChiDauNam" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnThuBoSung" max="32767" attributes="0"/>
+                      <Component id="btnThuHoHocPhi" min="-2" pref="128" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnThuKhaoThi" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                      <Component id="btnThuTheoDangKi" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnThuHocPhi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnThuKhaoThi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnThuHoHocPhi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnThuBoSung" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnThuTheoDangKi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnThuChiDauNam" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnThuHoHocPhi">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Thu h&#x1ed9; h&#x1ecd;c ph&#xed;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnThuKhaoThi">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Thu kh&#x1ea3;o th&#xed;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnThuHocPhi">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch n&#x1ed9;p h&#x1ecd;c ph&#xed;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuHocPhiActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnThuChiDauNam">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xed; thu chi &#x111;&#x1ea7;u n&#x103;m"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuChiDauNamActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnThuBoSung">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Thu b&#x1ed5; sung"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuBoSungActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnThuTheoDangKi">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Thu theo &#x111;&#x103;ng k&#xed;"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnDangXuat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDangXuatActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

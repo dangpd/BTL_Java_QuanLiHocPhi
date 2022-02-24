@@ -15,21 +15,21 @@ public class TableModel<T> extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return data.size(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return data.size(); 
     }
 
     @Override
     public int getColumnCount() {
-        return tenCot.length; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return tenCot.length; 
     }
 
     @Override
     public String getColumnName(int column) {
-        return tenCot[column]; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return tenCot[column]; 
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 }
