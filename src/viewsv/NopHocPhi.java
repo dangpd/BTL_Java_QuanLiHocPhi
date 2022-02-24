@@ -164,15 +164,14 @@ public class NopHocPhi extends java.awt.Dialog {
                     lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
                     String maKT = (String) tableCongNoThu.getValueAt(tableCongNoThu.getSelectedRow(), 0);
                     for (CongNo cn : congNos) {
-                        if (cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())
-                                && cn.getKhoanThu().getMaKhoanThu().equals(maKT)) {
+                        if (cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien()) && cn.getKhoanThu().getMaKhoanThu().equals(maKT)) {
                             cn.setKiemTraThu(true);
+                            GiaoDich giaoDich = new GiaoDich(sinhVien, cn.getKhoanThu().getTenKhoanThu(), sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(gia));
+                            giaoDichs.add(giaoDich);
                         }
                     }
                     loadTable();
                     con.ghiFile(congNos, "src/TextJava/congno.txt");
-                    GiaoDich giaoDich = new GiaoDich(sinhVien, "Nộp học phí", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(gia));
-                    giaoDichs.add(giaoDich);
                     con.ghiFile(giaoDichs, "src/TextJava/giaodich.txt");
                     dsSinhViens.set(dsSinhViens.indexOf(sinhVien), sinhVien);
                     con.ghiFile(dsSinhViens, "src/TextJava/sinhvien.txt");
