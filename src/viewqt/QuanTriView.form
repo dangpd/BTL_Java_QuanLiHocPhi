@@ -178,6 +178,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Thu h&#x1ed9; h&#x1ecd;c ph&#xed;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuHoHocPhiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnThuKhaoThi">
           <Properties>

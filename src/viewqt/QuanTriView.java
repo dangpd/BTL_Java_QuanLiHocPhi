@@ -59,6 +59,11 @@ public class QuanTriView extends javax.swing.JFrame {
 
         btnThuHoHocPhi.setBackground(new java.awt.Color(255, 255, 255));
         btnThuHoHocPhi.setText("Thu hộ học phí");
+        btnThuHoHocPhi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThuHoHocPhiActionPerformed(evt);
+            }
+        });
 
         btnThuKhaoThi.setBackground(new java.awt.Color(255, 255, 255));
         btnThuKhaoThi.setText("Thu khảo thí");
@@ -203,6 +208,8 @@ public class QuanTriView extends javax.swing.JFrame {
 
     private void btnThuHocPhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuHocPhiActionPerformed
         // TODO add your handling code here:
+        HienThiDS hienThiDS = new HienThiDS(this, rootPaneCheckingEnabled);
+        hienThiDS.setVisible(true);
     }//GEN-LAST:event_btnThuHocPhiActionPerformed
 
     private void btnThuChiDauNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuChiDauNamActionPerformed
@@ -236,6 +243,12 @@ public class QuanTriView extends javax.swing.JFrame {
         QuanLyThuTheoDK quanLyThuTheoDK = new QuanLyThuTheoDK();
         quanLyThuTheoDK.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnThuTheoDangKiActionPerformed
+
+    private void btnThuHoHocPhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuHoHocPhiActionPerformed
+        // TODO add your handling code here:
+        NopHoHocPhi nopHoHocPhi = new NopHoHocPhi(this, rootPaneCheckingEnabled);
+        nopHoHocPhi.setVisible(true);
+    }//GEN-LAST:event_btnThuHoHocPhiActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

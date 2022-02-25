@@ -67,12 +67,14 @@ public class Data {
         TaiKhoanTien tktien4 = new TaiKhoanTien("tktien4", 100000000);
         TaiKhoanTien tktien5 = new TaiKhoanTien("tktien6", 100000000);
         TaiKhoanTien tktien6 = new TaiKhoanTien("tktien7", 100000000);
+        TaiKhoanTien tktien7 = new TaiKhoanTien("tknt", 1000000000);
         taiKhoanTiens.add(tktien1);
         taiKhoanTiens.add(tktien2);
         taiKhoanTiens.add(tktien3);
         taiKhoanTiens.add(tktien4);
         taiKhoanTiens.add(tktien5);
         taiKhoanTiens.add(tktien6);
+        taiKhoanTiens.add(tktien7);
         con.ghiFile(taiKhoanTiens, "src/TextJava/taikhoantien.txt");
 
         //SinhVien
