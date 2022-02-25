@@ -145,7 +145,6 @@ public class ThemThuChiDauNam extends java.awt.Dialog {
                         }
                         return -1;
                     }
-
                 });
                 soMax = maThuChiDauNamMax.getSoDanhMaTuDong();
             } else {
