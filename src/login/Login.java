@@ -140,36 +140,28 @@ public class Login extends javax.swing.JFrame {
             } else {
                 String user = txtTaiKhoan.getText();
                 String pass = txtMatKhau.getText();
-                TaiKhoan temp = new TaiKhoan(user, pass);
+                TaiKhoan temp = new TaiKhoan(user);
                 int index = dsTaiKhoan.indexOf(temp);
                 if (index >= 0) {
                     TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(temp));
-                    if (!tk.getMaTaiKhoan().equals(user) || !tk.getMatKhau().equals(pass)) {
-                        JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
+                    if (!tk.getMatKhau().equals(pass)) {
+                        JOptionPane.showMessageDialog(this, "Không đúng tài khoản hoặc mật khẩu !");
                         return;
                     }
                     temp = dsTaiKhoan.get(index);
                     if (temp.getQuyen().equals("QT")) {
                         JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò quản trị viên!");
-                        QuanTri qt = dsQT
-                                .stream()
-                                .filter(s -> s.getMaQuanTri().equals(user))
-                                .findFirst()
-                                .get();
+                        QuanTri qt = dsQT.get(dsQT.indexOf(new QuanTri(user)));
                         QuanTriView qtMain = new QuanTriView(qt);
                         qtMain.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò sinh viên!");
-                        SinhVien sv = dsSV
-                                .stream()
-                                .filter(s -> s.getMaSinhVien().equals(user))
-                                .findFirst()
-                                .get();
+                        SinhVien sv = dsSV.get(dsSV.indexOf(new SinhVien(user)));
                         SinhVienMain svMain = new SinhVienMain(sv);
                         svMain.setVisible(true);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Không đúng mật khẩu hoặc tài khoản !");
+                    JOptionPane.showMessageDialog(this, "Không đúng tài khoản hoặc mật khẩu !");
                     return;
                 }
                 this.setVisible(false);

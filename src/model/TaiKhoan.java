@@ -9,9 +9,8 @@ public class TaiKhoan implements Serializable {
     private String matKhau;
     private String quyen;
 
-    public TaiKhoan(String maTaiKhoan, String matKhau) {
+    public TaiKhoan(String maTaiKhoan) {
         this.maTaiKhoan = maTaiKhoan;
-        this.matKhau = matKhau;
     }
 
     public TaiKhoan(String maTaiKhoan, String matKhau, String quyen) {

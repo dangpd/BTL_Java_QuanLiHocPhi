@@ -15,6 +15,10 @@ public class QuanTri implements Serializable {
         this.chucVu = chucVu;
     }
 
+    public QuanTri(String maQuanTri) {
+        this.maQuanTri = maQuanTri;
+    }
+
     public QuanTri() {
     }
 

@@ -11,6 +11,10 @@ public class SinhVien implements Serializable {
     private String diaChi;
     private TaiKhoanTien taiKhoanTien;
 
+    public SinhVien(String maSinhVien) {
+        this.maSinhVien = maSinhVien;
+    }
+    
     public SinhVien(String maSinhVien, String hoTen, Lop lop, double soTienTK, String diaChi, TaiKhoanTien taiKhoanTien) {
         super();
         this.maSinhVien = maSinhVien;
