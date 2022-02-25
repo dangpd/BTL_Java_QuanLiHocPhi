@@ -31,8 +31,7 @@ public class FormViDienTu extends javax.swing.JFrame {
         dsViDienTu = con.docFile("src/TextJava/vidientu.txt");
         napTienVaoTaiKhoan = ntvtk;
         initComponents();
-        txtSoTienMuonNap.setText(String.format("%.2f", Float.parseFloat(soTienCanNap)));
-        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        txtSoTienMuonNap.setText(String.format("%.2f", Double.parseDouble(soTienCanNap)));
     }
 
     @SuppressWarnings("unchecked")
@@ -158,7 +157,7 @@ public class FormViDienTu extends javax.swing.JFrame {
                     sinhVien.setSoTienTK(soDu + soTienNap);
                     napTienVaoTaiKhoan.loadSoDu();
                     dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
-                    GiaoDich giaoDich = new GiaoDich(sinhVien, "Nạp tiền vào tài khoản", sinhVien.getTaiKhoanTien(), new Date(), "+ " + String.valueOf(soTienNap));
+                    GiaoDich giaoDich = new GiaoDich(sinhVien, "Nạp tiền vào tài khoản", sinhVien.getTaiKhoanTien(), new Date(), "+ " + String.format("%.2f", soTienNap));
                     dsGiaoDich.add(giaoDich);
                     con.ghiFile(dsViDienTu, "src/TextJava/vidientu.txt");
                     con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");

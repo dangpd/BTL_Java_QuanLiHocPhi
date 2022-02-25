@@ -17,7 +17,7 @@ public class NopHocPhi extends java.awt.Dialog {
     private SinhVienMain sinhVienMain;
     private SinhVien sinhVien;
     private TableModel<CongNo> congNoThuModel;
-    private ArrayList<CongNo> congNos = new ArrayList<>();
+    private ArrayList<CongNo> congNos;
     private ArrayList<GiaoDich> giaoDichs;
     private ArrayList<SinhVien> dsSinhViens;
     private Controller con;
@@ -157,16 +157,15 @@ public class NopHocPhi extends java.awt.Dialog {
                 double gia = (double) tableCongNoThu.getValueAt(row, 2);
                 double tien = sinhVien.getSoTienTK();
                 if (gia > tien) {
-                    JOptionPane.showMessageDialog(this, "Số tiền trong tài khoản không đủ, vui lòng nạp thêm tièn");
+                    JOptionPane.showMessageDialog(this, "Số tiền trong tài khoản không đủ, vui lòng nạp thêm tiền!");
                 } else {
                     sinhVien.setSoTienTK(tien - gia);
-                    System.out.println(sinhVien.toString());
                     lblSoDuTK.setText(String.valueOf(sinhVien.getSoTienTK()));
                     String maKT = (String) tableCongNoThu.getValueAt(tableCongNoThu.getSelectedRow(), 0);
                     for (CongNo cn : congNos) {
                         if (cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien()) && cn.getKhoanThu().getMaKhoanThu().equals(maKT)) {
                             cn.setKiemTraThu(true);
-                            GiaoDich giaoDich = new GiaoDich(sinhVien, cn.getKhoanThu().getTenKhoanThu(), sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(gia));
+                            GiaoDich giaoDich = new GiaoDich(sinhVien, cn.getKhoanThu().getTenKhoanThu(), sinhVien.getTaiKhoanTien(), new Date(), "- " + String.format("%.2f", gia));
                             giaoDichs.add(giaoDich);
                         }
                     }
@@ -216,7 +215,7 @@ public class NopHocPhi extends java.awt.Dialog {
                     for (CongNo cn : congNos) {
                         if (cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien()) && cn.getKhoanThu().getMaKhoanThu().equals(maKT)) {
                             cn.setKiemTraThu(true);
-                            GiaoDich giaoDich = new GiaoDich(sinhVien, cn.getKhoanThu().getTenKhoanThu(), sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(gia));
+                            GiaoDich giaoDich = new GiaoDich(sinhVien, cn.getKhoanThu().getTenKhoanThu(), sinhVien.getTaiKhoanTien(), new Date(), "- " + String.format("%.2f", gia));
                             giaoDichs.add(giaoDich);
                         }
                     }

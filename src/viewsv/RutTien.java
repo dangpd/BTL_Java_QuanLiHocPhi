@@ -34,7 +34,7 @@ public class RutTien extends java.awt.Dialog {
         this.setLocationRelativeTo(null);
         sinhVienMain = (SinhVienMain) parent;
     }
-    
+
     public void loadSoDu() {
         txtSoDu.setText(String.format("%.2f", sinhVien.getSoTienTK()));
     }
@@ -172,21 +172,19 @@ public class RutTien extends java.awt.Dialog {
             }
             if (cbViTaiKhoanTien.isSelected()) {
                 TaiKhoan tk = dsTaiKhoan.get(dsTaiKhoan.indexOf(new TaiKhoan(sinhVien.getMaSinhVien(), "", "")));
-                
+
                 int output = JOptionPane.showConfirmDialog(frame,
                         "Xác nhận rút tiền", "Lựa chọn", JOptionPane.YES_NO_OPTION);
                 if (output == JOptionPane.YES_OPTION) {
                     sinhVien.getTaiKhoanTien().setSoDu(sinhVien.getTaiKhoanTien().getSoDu() + soTienRut);
                     sinhVien.setSoTienTK(soDu - soTienRut);
                     dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
-
-                    GiaoDich giaoDich = new GiaoDich(sinhVien, "Rút tiền", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.valueOf(soTienRut));
+                    GiaoDich giaoDich = new GiaoDich(sinhVien, "Rút tiền", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.format("%.2f", soTienRut));
                     dsGiaoDich.add(giaoDich);
                     con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
                     con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                     sinhVienMain.loadData();
-                    loadSoDu();
-                    throw new Exception("Rút thành công");
+                    JOptionPane.showMessageDialog(frame, "Rút thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
                 RutTienViDienTu vdt = new RutTienViDienTu(txtSoTienCanRut.getText(), sinhVien, sinhVienMain, this);

@@ -4,9 +4,7 @@ import controller.Controller;
 import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import model.GiaoDich;
 import model.SinhVien;
 import model.TaiKhoan;
@@ -210,7 +208,7 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
                         sinhVien.setSoTienTK(soDu + soTienNap);
                         loadSoDu();
                         dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
-                        GiaoDich giaoDich = new GiaoDich(sinhVien, "Nạp tiền vào tài khoản", sinhVien.getTaiKhoanTien(), new Date(), "+ " + String.valueOf(soTienNap));
+                        GiaoDich giaoDich = new GiaoDich(sinhVien, "Nạp tiền vào tài khoản", sinhVien.getTaiKhoanTien(), new Date(), "+ " + String.format("%.2f", soTienNap));
                         dsGiaoDich.add(giaoDich);
                         con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
                         con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");

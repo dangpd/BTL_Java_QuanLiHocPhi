@@ -147,18 +147,19 @@ public class Login extends javax.swing.JFrame {
                     if (!tk.getMatKhau().equals(pass)) {
                         JOptionPane.showMessageDialog(this, "Không đúng tài khoản hoặc mật khẩu !");
                         return;
-                    }
-                    temp = dsTaiKhoan.get(index);
-                    if (temp.getQuyen().equals("QT")) {
-                        JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò quản trị viên!");
-                        QuanTri qt = dsQT.get(dsQT.indexOf(new QuanTri(user)));
-                        QuanTriView qtMain = new QuanTriView(qt);
-                        qtMain.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò sinh viên!");
-                        SinhVien sv = dsSV.get(dsSV.indexOf(new SinhVien(user)));
-                        SinhVienMain svMain = new SinhVienMain(sv);
-                        svMain.setVisible(true);
+                        temp = dsTaiKhoan.get(index);
+                        if (temp.getQuyen().equals("QT")) {
+                            JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò quản trị viên!");
+                            QuanTri qt = dsQT.get(dsQT.indexOf(new QuanTri(user)));
+                            QuanTriView qtMain = new QuanTriView(qt);
+                            qtMain.setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Bạn đang đăng nhập với vai trò sinh viên!");
+                            SinhVien sv = dsSV.get(dsSV.indexOf(new SinhVien(user)));
+                            SinhVienMain svMain = new SinhVienMain(sv);
+                            svMain.setVisible(true);
+                        }
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "Không đúng tài khoản hoặc mật khẩu !");
