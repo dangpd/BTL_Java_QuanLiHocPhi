@@ -1,6 +1,4 @@
-
 package data;
-
 
 import java.util.ArrayList;
 import model.Khoa;
@@ -19,7 +17,7 @@ import model.ThuBoSung;
 import model.ThuChiDauNam;
 import model.ThuKhaoThi;
 import model.ThuTheoDangKy;
-
+import model.ViDienTu;
 
 public class Data {
 
@@ -79,9 +77,9 @@ public class Data {
 
         //SinhVien
         ArrayList<SinhVien> sinhViens = new ArrayList<SinhVien>();
-        SinhVien sinhVien1 = new SinhVien("001", "Bang", lop1, 10000000, "ThaiBinh", tktien1);
+        SinhVien sinhVien1 = new SinhVien("001", "Dang", lop1, 10000000, "ThaiBinh", tktien1);
         SinhVien sinhVien2 = new SinhVien("002", "Chien", lop1, 1000000, "ThaiBinh", tktien2);
-        SinhVien sinhVien3 = new SinhVien("003", "Dang", lop1, 1000000, "ThaiBinh", tktien3);
+        SinhVien sinhVien3 = new SinhVien("003", "Bang", lop1, 1000000, "ThaiBinh", tktien3);
         SinhVien sinhVien4 = new SinhVien("004", "Dai", lop2, 1000000, "ThaiBinh", tktien4);
         SinhVien sinhVien5 = new SinhVien("005", "Dung", lop1, 1000000, "ThaiBinh", tktien5);
         SinhVien sinhVien6 = new SinhVien("006", "Chienn123", lop3, 1000000, "ThaiBinh", tktien6);
@@ -175,6 +173,20 @@ public class Data {
         congNos.add(congNo5);
         con.ghiFile(congNos, "src/TextJava/congno.txt");
 
+        //Vi dien tu
+        ArrayList<ViDienTu> dsviDienTu = new ArrayList<>();
+        ViDienTu vi1 = new ViDienTu("012345678", "12345", 1000000000);
+        ViDienTu vi2 = new ViDienTu("012345679", "12345", 1000000000);
+        ViDienTu vi3 = new ViDienTu("0123456710", "12345", 1000000000);
+        ViDienTu vi4 = new ViDienTu("0123456711", "12345", 1000000000);
+        ViDienTu vi5 = new ViDienTu("0123456712", "12345", 1000000000);
+        dsviDienTu.add(vi1);
+        dsviDienTu.add(vi2);
+        dsviDienTu.add(vi3);
+        dsviDienTu.add(vi4);
+        dsviDienTu.add(vi5);
+        con.ghiFile(dsviDienTu, "src/TextJava/vidientu.txt");
+        
         //GiaoDich
         ArrayList<GiaoDich> giaoDichs = new ArrayList<>();
         con.ghiFile(giaoDichs, "src/TextJava/giaodich.txt");
@@ -182,11 +194,11 @@ public class Data {
         //Thu chi đầu năm
         ArrayList<ThuChiDauNam> thuChiDauNams = new ArrayList<>();
         con.ghiFile(thuChiDauNams, "src/TextJava/thuchidaunam.txt");
-        
+
         //Thu bổ sung
         ArrayList<ThuBoSung> thuBoSungs = new ArrayList<>();
         con.ghiFile(thuBoSungs, "src/TextJava/thubosung.txt");
-        
+
         //Thu khảo thí
         ArrayList<ThuKhaoThi> thuKhaoThis = new ArrayList<>();
         con.ghiFile(thuKhaoThis, "src/TextJava/thukhaothi.txt");

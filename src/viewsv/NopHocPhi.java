@@ -204,8 +204,6 @@ public class NopHocPhi extends java.awt.Dialog {
             for (int i = 0; i < tableCongNoThu.getRowCount(); i++) {
                 tong += (double) tableCongNoThu.getValueAt(i, 2);
             }
-            
-            
             double tien = sinhVien.getSoTienTK();
             if (tong > tien) {
                 JOptionPane.showMessageDialog(this, "Só tiền trong tài khoản không đủ, vui lòng nạp thêm tièn");
