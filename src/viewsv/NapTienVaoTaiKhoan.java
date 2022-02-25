@@ -236,10 +236,16 @@ public class NapTienVaoTaiKhoan extends java.awt.Dialog {
 
     private void cbViTaiKhoanTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbViTaiKhoanTienActionPerformed
         // TODO add your handling code here:
+        if (cbViTaiKhoanTien.isSelected()) {
+            cbViDienTu.setSelected(false);
+        }
     }//GEN-LAST:event_cbViTaiKhoanTienActionPerformed
 
     private void cbViDienTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbViDienTuActionPerformed
         // TODO add your handling code here:
+        if (cbViDienTu.isSelected()) {
+            cbViTaiKhoanTien.setSelected(false);
+        }
     }//GEN-LAST:event_cbViDienTuActionPerformed
 
     private void txtTaiKhoanNganHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTaiKhoanNganHangMouseClicked
