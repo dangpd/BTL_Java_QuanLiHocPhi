@@ -5,12 +5,11 @@ import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import model.CongNo;
 import model.GiaoDich;
 import model.SinhVien;
 import model.TaiKhoan;
-import model.Thu;
-import model.ThuTheoDangKy;
+import model.TaiKhoanTien;
+
 
 public class RutTien extends java.awt.Dialog {
 
@@ -18,6 +17,7 @@ public class RutTien extends java.awt.Dialog {
     private ArrayList<SinhVien> dsSinhVien;
     private ArrayList<TaiKhoan> dsTaiKhoan;
     private ArrayList<GiaoDich> dsGiaoDich;
+    private ArrayList<TaiKhoanTien> dsTaiKhoanTien;
     private Controller con;
 
     private SinhVienMain sinhVienMain;
@@ -29,6 +29,7 @@ public class RutTien extends java.awt.Dialog {
         this.dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
         this.dsTaiKhoan = con.docFile("src/TextJava/taikhoan.txt");
         this.dsGiaoDich = con.docFile("src/TextJava/giaodich.txt");
+        this.dsTaiKhoanTien = con.docFile("src/TextJava/taikhoantien.txt");
         initComponents();
         loadSoDu();
         this.setLocationRelativeTo(null);
@@ -181,6 +182,7 @@ public class RutTien extends java.awt.Dialog {
                     dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
                     GiaoDich giaoDich = new GiaoDich(sinhVien, "Rút tiền", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.format("%.2f", soTienRut));
                     dsGiaoDich.add(giaoDich);
+                    con.ghiFile(dsTaiKhoanTien, "src/TextJava/taikhoantien.txt");
                     con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
                     con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
                     sinhVienMain.loadData();
