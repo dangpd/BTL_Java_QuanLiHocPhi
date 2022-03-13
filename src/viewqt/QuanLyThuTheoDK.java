@@ -23,10 +23,6 @@ import model.TableModel;
 import model.Thu;
 import model.ThuTheoDangKy;
 
-/**
- *
- * @author dungt
- */
 public class QuanLyThuTheoDK extends javax.swing.JFrame {
 
     private ArrayList<ThuTheoDangKy> dsThuTheoDangKy;
@@ -326,17 +322,23 @@ public class QuanLyThuTheoDK extends javax.swing.JFrame {
 
             HocPhan hp = dsHocPhan.get(dsHocPhan.indexOf(new HocPhan(maHocPhanHuy, "", 0, "")));
             LopHocPhan lhp = new LopHocPhan(sinhVien, hp);
+
+            dsHocPhanDaDangKy = new ArrayList<>();
+            for (int i = 0; i < dsLopHocPhan.size(); i++) {
+                LopHocPhan get = dsLopHocPhan.get(i);
+                if (get.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())) {
+                    dsLopHocPhanDaDangKy.add(get);
+                    dsHocPhanDaDangKy.add(get.getHocPhan());
+                }
+            }
+            if (!dsLopHocPhanDaDangKy.contains(lhp)) {
+                throw new Exception("Sinh viên chưa đăng ký môn học này!");
+            }
+
             int output = JOptionPane.showConfirmDialog(frame,
                     "Xác nhận rút học phần", "Lựa chọn", JOptionPane.YES_NO_OPTION);
             if (output == JOptionPane.YES_OPTION) {
-                dsHocPhanDaDangKy = new ArrayList<>();
-                for (int i = 0; i < dsLopHocPhan.size(); i++) {
-                    LopHocPhan get = dsLopHocPhan.get(i);
-                    if (get.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())) {
-                        dsLopHocPhanDaDangKy.add(get);
-                        dsHocPhanDaDangKy.add(get.getHocPhan());
-                    }
-                }
+
                 dsLopHocPhan.remove(dsLopHocPhan.indexOf(lhp));
                 Thu thu = new ThuTheoDangKy();
                 thu = dsThuTheoDangKy.get(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
@@ -353,7 +355,6 @@ public class QuanLyThuTheoDK extends javax.swing.JFrame {
                 dsThuTheoDangKy.remove(dsThuTheoDangKy.indexOf(new ThuTheoDangKy(0, lhp, sinhVien.getMaSinhVien())));
                 dsHocPhanDaDangKy.remove(dsHocPhanDaDangKy.indexOf(hp));
 
-                
                 con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
                 con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");
 

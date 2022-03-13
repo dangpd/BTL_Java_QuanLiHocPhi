@@ -16,10 +16,7 @@ import model.SinhVien;
 import model.ThuBoSung;
 import model.ThuChiDauNam;
 
-/**
- *
- * @author Chien
- */
+
 public class SuaThuBoSung extends java.awt.Dialog {
     
     private String khoanThuCanSua;
@@ -46,7 +43,7 @@ public class SuaThuBoSung extends java.awt.Dialog {
         dsKhoa = con.docFile("src/TextJava/khoa.txt");
         dsThuBoSung = con.docFile("src/TextJava/thubosung.txt");
         dsCongNo = con.docFile("src/TextJava/congno.txt");
-        dsSinhVien = con.docFile("src/TextJava/sinhVien.txt");
+        dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
         dsGiaoDich = con.docFile("src/TextJava/giaodich.txt");
        
         initComponents();

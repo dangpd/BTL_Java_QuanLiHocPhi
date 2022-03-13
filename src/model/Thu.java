@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Thu implements Serializable {
+public class Thu implements Serializable {
 
     protected String maSV;
     protected String maKhoanThu;

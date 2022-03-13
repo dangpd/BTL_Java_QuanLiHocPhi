@@ -132,9 +132,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnThuHocPhi" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnThuChiDauNam" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnThuChiDauNam" max="32767" attributes="0"/>
+                      <Component id="btnThuHocPhi" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -176,7 +176,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Thu h&#x1ed9; h&#x1ecd;c ph&#xed;"/>
+            <Property name="text" type="java.lang.String" value="N&#x1ed9;p h&#x1ed9; h&#x1ecd;c ph&#xed;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuHoHocPhiActionPerformed"/>
@@ -198,7 +198,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch n&#x1ed9;p h&#x1ecd;c ph&#xed;"/>
+            <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch thu &#x111;&#xf3;ng"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuHocPhiActionPerformed"/>

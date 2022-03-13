@@ -16,10 +16,7 @@ import model.SinhVien;
 import model.ThuBoSung;
 import model.ThuChiDauNam;
 
-/**
- *
- * @author Chien
- */
+
 public class ThemThuBoSung extends java.awt.Dialog {
     
     private QLThuBoSung quanLyBoSung = new QLThuBoSung();
@@ -41,7 +38,7 @@ public class ThemThuBoSung extends java.awt.Dialog {
         dsKhoa = con.docFile("src/TextJava/khoa.txt");
         dsThuBoSung = con.docFile("src/TextJava/thubosung.txt");
         dsCongNo = con.docFile("src/TextJava/congno.txt");
-        dsSinhVien = con.docFile("src/TextJava/sinhVien.txt");
+        dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
         initComponents();
         this.setLocationRelativeTo(null);
         showComBox();

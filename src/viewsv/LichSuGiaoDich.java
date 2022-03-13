@@ -38,6 +38,7 @@ public class LichSuGiaoDich extends javax.swing.JFrame {
         setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
+    // Nếu lỗi đoạn này thì thâỳ cô cài thư viện jdk 17 là đưuọc ạ
     public void loadGiaoDich() {
         String[] tenCot = {"Tên khoản thu", "Ngày", "Số tiền"};
         List<GiaoDich> temp = giaoDichs.stream().filter(cn -> cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())).toList();

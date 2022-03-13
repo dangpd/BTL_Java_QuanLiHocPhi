@@ -182,6 +182,7 @@ public class RutTien extends java.awt.Dialog {
                     dsSinhVien.set(dsSinhVien.indexOf(sinhVien), sinhVien);
                     GiaoDich giaoDich = new GiaoDich(sinhVien, "Rút tiền", sinhVien.getTaiKhoanTien(), new Date(), "- " + String.format("%.2f", soTienRut));
                     dsGiaoDich.add(giaoDich);
+                    loadSoDu();
                     con.ghiFile(dsTaiKhoanTien, "src/TextJava/taikhoantien.txt");
                     con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
                     con.ghiFile(dsSinhVien, "src/TextJava/sinhvien.txt");

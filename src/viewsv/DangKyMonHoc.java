@@ -26,8 +26,8 @@ public class DangKyMonHoc extends java.awt.Dialog {
     private ArrayList<ThuTheoDangKy> dsThuTheoDangKy = new ArrayList<>();
     private ArrayList<CongNo> congNos = new ArrayList<>();
     private Controller con;
-    private String maMonDangKy;
-    private String tenMonDangKi;
+    private String maMonDangKy="";
+    private String tenMonDangKi="";
     private int tinChi;
     private double gia;
 

@@ -36,7 +36,7 @@ public class SuaThuChiDauNam extends java.awt.Dialog {
         dsKhoa = con.docFile("src/TextJava/khoa.txt");
         dsThuChiDauNam = con.docFile("src/TextJava/thuchidaunam.txt");
         dsCongNo = con.docFile("src/TextJava/congno.txt");
-        dsSinhVien = con.docFile("src/TextJava/sinhVien.txt");
+        dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
         dsGiaoDich = con.docFile("src/TextJava/giaodich.txt");
        
         initComponents();

@@ -21,10 +21,6 @@ import model.TableModel;
 import model.ThuBoSung;
 import model.ThuKhaoThi;
 
-/**
- *
- * @author dungt
- */
 public class QuanLyThuKhaoThi extends javax.swing.JFrame {
 
     private Controller con;
@@ -51,7 +47,7 @@ public class QuanLyThuKhaoThi extends javax.swing.JFrame {
         dsKhoa = con.docFile("src/TextJava/khoa.txt");
         dsThuKhaoThi = con.docFile("src/TextJava/thukhaothi.txt");
         dsCongNo = con.docFile("src/TextJava/congno.txt");
-        dsSinhVien = con.docFile("src/TextJava/sinhVien.txt");
+        dsSinhVien = con.docFile("src/TextJava/sinhvien.txt");
         dsGiaoDich = con.docFile("src/TextJava/giaodich.txt");
 
         initComponents();

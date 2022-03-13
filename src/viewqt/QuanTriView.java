@@ -58,7 +58,7 @@ public class QuanTriView extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnThuHoHocPhi.setBackground(new java.awt.Color(255, 255, 255));
-        btnThuHoHocPhi.setText("Thu hộ học phí");
+        btnThuHoHocPhi.setText("Nộp hộ học phí");
         btnThuHoHocPhi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThuHoHocPhiActionPerformed(evt);
@@ -74,7 +74,7 @@ public class QuanTriView extends javax.swing.JFrame {
         });
 
         btnThuHocPhi.setBackground(new java.awt.Color(255, 255, 255));
-        btnThuHocPhi.setText("Danh sách nộp học phí");
+        btnThuHocPhi.setText("Danh sách thu đóng");
         btnThuHocPhi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThuHocPhiActionPerformed(evt);
@@ -111,9 +111,9 @@ public class QuanTriView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnThuHocPhi)
-                    .addComponent(btnThuChiDauNam))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnThuChiDauNam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnThuHocPhi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnThuBoSung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

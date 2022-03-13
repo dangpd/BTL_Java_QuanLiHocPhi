@@ -18,10 +18,6 @@ import model.SinhVien;
 import model.TableModel;
 import model.TaiKhoanTien;
 
-/**
- *
- * @author ngova
- */
 public class NopHoHocPhi extends java.awt.Dialog {
 
     /**
@@ -34,10 +30,12 @@ public class NopHoHocPhi extends java.awt.Dialog {
     private ArrayList<GiaoDich> dsGiaoDich;
     private ArrayList<SinhVien> dsSinhVien;
     private Controller con;
-    private String maKhoanThu = "";
     private int dong = -1;
     private ArrayList<TaiKhoanTien> dsTaiKhoanTien = new ArrayList<>();
-
+    String mkt;
+    String msv;
+    
+    // Nếu lỗi đoạn này thì thâỳ cô cài thư viện jdk 17 là đưuọc ạ
     public NopHoHocPhi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.sinhVien = sinhVien;
@@ -116,6 +114,11 @@ public class NopHoHocPhi extends java.awt.Dialog {
                 "Mã sinh viên ", "Mã khoản thu", "Tên khoản thu", "Số tiền "
             }
         ));
+        tableCongNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCongNoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableCongNo);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -226,11 +229,9 @@ public class NopHoHocPhi extends java.awt.Dialog {
 
     private void btnNopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNopActionPerformed
         // TODO add your handling code here:
-        dong = tableCongNo.getSelectedRow();
-        String mkt = (String) tableCongNo.getValueAt(dong, 1);
-        String msv = (String) tableCongNo.getValueAt(dong, 0);
+
         try {
-            if (mkt.equals("")) {
+            if (dong == -1) {
                 JOptionPane.showMessageDialog(this, "Bạn chưa chọn môn để nộp");
             } else {
                 double gia = (double) tableCongNo.getValueAt(dong, 3);
@@ -262,10 +263,6 @@ public class NopHoHocPhi extends java.awt.Dialog {
         // TODO add your handling code here:
 
         try {
-            double tong = 0;
-            for (int i = 0; i < tableCongNo.getRowCount(); i++) {
-                tong += (double) tableCongNo.getValueAt(i, 3);
-            }
             for (int i = 0; i < tableCongNo.getRowCount(); i++) {
                 String maKT = (String) tableCongNo.getValueAt(i, 1);
                 String msv = (String) tableCongNo.getValueAt(i, 0);
@@ -273,36 +270,36 @@ public class NopHoHocPhi extends java.awt.Dialog {
                 for (CongNo cn : congNo) {
                     cn.setKiemTraThu(true);
                 }
-               
                 con.ghiFile(congNo, "src/TextJava/congno.txt");
                 GiaoDich giaoDich = new GiaoDich(dsSinhVien.get(dsSinhVien.indexOf(new SinhVien(msv, "", null, gia, msv, null))), "Nộp học phí", dsTaiKhoanTien.get(dsTaiKhoanTien.indexOf(new TaiKhoanTien("tknt", 0))), new Date(), "- " + String.valueOf(gia));
                 dsGiaoDich.add(giaoDich);
                 con.ghiFile(dsGiaoDich, "src/TextJava/giaodich.txt");
-                  txtMasv.setText("");
+                txtMasv.setText("");
                 List<CongNo> temp = congNo.stream().filter(cn -> cn.isKiemTraThu() == false).toList();
                 ArrayList<CongNo> congNoChuaThanhToan = new ArrayList<>();
                 congNoChuaThanhToan.addAll(temp);
                 loadTable(congNoChuaThanhToan);
             }
             JOptionPane.showMessageDialog(this, "Thanh toán thành công");
-
         } catch (Exception e) {
             Frame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, e.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
-
-
     }//GEN-LAST:event_btnNopTatCaActionPerformed
 
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
         // TODO add your handling code here:
-         setVisible(false);
+        setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
 
+    private void tableCongNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCongNoMouseClicked
+        // TODO add your handling code here:
+        dong = tableCongNo.getSelectedRow();
+        mkt = (String) tableCongNo.getValueAt(dong, 1);
+        msv = (String) tableCongNo.getValueAt(dong, 0);
+    }//GEN-LAST:event_tableCongNoMouseClicked
 
-  
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNop;

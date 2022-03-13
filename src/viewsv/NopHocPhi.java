@@ -36,6 +36,7 @@ public class NopHocPhi extends java.awt.Dialog {
         this.setLocationRelativeTo(null);
     }
 
+    // Nếu lỗi đoạn này thì thâỳ cô cài thư viện jdk 17 là đưuọc ạ
     public void loadTable() {
         String[] tenCot = {"Mã khoản thu", "Tên khoản thu", "Giá"};
         List<CongNo> temp = congNos.stream().filter(cn -> cn.isKiemTraThu() == false && cn.getSinhVien().getMaSinhVien().equals(sinhVien.getMaSinhVien())).toList();
